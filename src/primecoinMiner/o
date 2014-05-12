@@ -1,0 +1,9 @@
+@search:
+	.section	.AMDGPU.config
+.long	47176
+.long	0
+.long	47180
+.long	0
+	.text
+	S_ENDPGM
+

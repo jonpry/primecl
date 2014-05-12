@@ -1,0 +1,3233 @@
+@sha256_init:
+	.section	.AMDGPU.config
+.long	47176
+.long	0
+.long	47180
+.long	0
+	.text
+; BB#0:                                 ; %entry
+	S_ENDPGM
+
+	.section	.AMDGPU.csdata
+; Kernel info:
+; NumSgprs: 0
+; NumVgprs: 0
+@sha256_starts:
+	.section	.AMDGPU.config
+.long	47176
+.long	67
+.long	47180
+.long	0
+	.text
+; BB#0:                                 ; %entry
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	S_ADD_I32 s4, s0, 36
+	S_ADDC_U32 s5, s2, 0
+	S_MOV_B64 s[8:9], 0
+	S_MOV_B32 s10, 0
+	S_MOV_B32 s11, 61440
+	V_MOV_B32_e32 v0, s4
+	V_MOV_B32_e32 v1, s5
+	BUFFER_LOAD_DWORD v0, s[8:11] + v[0:1] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ASHRREV_I32_e32 v1, 31, v0
+	V_LSHL_B64 v[2:3], v[0:1], 2
+	V_LSHR_B64 v[4:5], v[0:1], 30
+	S_ADD_I32 s0, s0, 44
+	S_ADDC_U32 s1, s2, 0
+	S_LOAD_DWORDX2 s[0:1], s[0:1], 0
+	S_WAITCNT lgkmcnt(0)
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	V_ADD_I32_e32 v6, s0, v2
+	V_ADDC_U32_e32 v7, s2, v4
+	S_MOV_B32 s4, 0
+	V_MOV_B32_e32 v8, s4
+	BUFFER_STORE_DWORD v8, s[8:11] + v[6:7] + 0
+	V_ADD_I32_e32 v6, 512, v0
+	V_ASHRREV_I32_e32 v7, 31, v6
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_LSHL_B64 v[8:9], v[6:7], 2
+	V_LSHR_B64 v[6:7], v[6:7], 30
+	V_ADD_I32_e32 v10, s0, v8
+	V_ADDC_U32_e32 v11, s2, v6
+	S_MOV_B32 s5, s11
+	S_MOV_B64 s[10:11], s[4:5]
+	V_MOV_B32_e32 v12, s4
+	BUFFER_STORE_DWORD v12, s[8:11] + v[10:11] + 0
+	S_ADD_I32 s6, s0, 184320
+	S_ADDC_U32 s7, s2, 0
+	S_LSHR_B64 s[12:13], s[6:7], 32
+	V_ADD_I32_e32 v10, s6, v2
+	V_ADDC_U32_e32 v11, s12, v4
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_MOV_B32_e32 v12, s4
+	BUFFER_STORE_DWORD v12, s[8:11] + v[10:11] + 0
+	V_ADD_I32_e32 v10, s6, v8
+	V_ADDC_U32_e32 v11, s12, v6
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_MOV_B32_e32 v12, s4
+	BUFFER_STORE_DWORD v12, s[8:11] + v[10:11] + 0
+	S_ADD_I32 s0, s0, 4096
+	S_ADDC_U32 s1, s2, 0
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	V_ADD_I32_e32 v2, s0, v2
+	V_ADDC_U32_e32 v3, s2, v4
+	V_MOV_B32_e32 v4, 1779033703
+	BUFFER_STORE_DWORD v4, s[8:11] + v[2:3] + 0
+	V_ADD_I32_e32 v2, s0, v8
+	V_ADDC_U32_e32 v3, s2, v6
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_MOV_B32_e32 v4, -1150833019
+	BUFFER_STORE_DWORD v4, s[8:11] + v[2:3] + 0
+	V_ADD_I32_e32 v2, 1024, v0
+	V_ASHRREV_I32_e32 v3, 31, v2
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s0, v4
+	V_ADDC_U32_e32 v5, s2, v2
+	V_MOV_B32_e32 v2, 1013904242
+	BUFFER_STORE_DWORD v2, s[8:11] + v[4:5] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v2, 1536, v0
+	V_ASHRREV_I32_e32 v3, 31, v2
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s0, v4
+	V_ADDC_U32_e32 v5, s2, v2
+	V_MOV_B32_e32 v2, -1521486534
+	BUFFER_STORE_DWORD v2, s[8:11] + v[4:5] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v2, 2048, v0
+	V_ASHRREV_I32_e32 v3, 31, v2
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s0, v4
+	V_ADDC_U32_e32 v5, s2, v2
+	V_MOV_B32_e32 v2, 1359893119
+	BUFFER_STORE_DWORD v2, s[8:11] + v[4:5] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v2, 2560, v0
+	V_ASHRREV_I32_e32 v3, 31, v2
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s0, v4
+	V_ADDC_U32_e32 v5, s2, v2
+	V_MOV_B32_e32 v2, -1694144372
+	BUFFER_STORE_DWORD v2, s[8:11] + v[4:5] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v2, 3072, v0
+	V_ASHRREV_I32_e32 v3, 31, v2
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s0, v4
+	V_ADDC_U32_e32 v5, s2, v2
+	V_MOV_B32_e32 v2, 528734635
+	BUFFER_STORE_DWORD v2, s[8:11] + v[4:5] + 0
+	V_ADD_I32_e32 v0, 3584, v0
+	V_ASHRREV_I32_e32 v1, 31, v0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_LSHL_B64 v[2:3], v[0:1], 2
+	V_LSHR_B64 v[0:1], v[0:1], 30
+	V_ADD_I32_e32 v2, s0, v2
+	V_ADDC_U32_e32 v3, s2, v0
+	V_MOV_B32_e32 v0, 1541459225
+	BUFFER_STORE_DWORD v0, s[8:11] + v[2:3] + 0
+	S_ENDPGM
+
+	.section	.AMDGPU.csdata
+; Kernel info:
+; NumSgprs: 15
+; NumVgprs: 12
+@sha256_process:
+	.section	.AMDGPU.config
+.long	47176
+.long	156
+.long	47180
+.long	0
+	.text
+; BB#0:                                 ; %entry
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	S_ADD_I32 s4, s0, 36
+	S_ADDC_U32 s5, s2, 0
+	S_MOV_B64 s[8:9], 0
+	S_MOV_B32 s10, 0
+	S_MOV_B32 s11, 61440
+	V_MOV_B32_e32 v0, s4
+	V_MOV_B32_e32 v1, s5
+	BUFFER_LOAD_DWORD v0, s[8:11] + v[0:1] + 0
+	S_ADD_I32 s4, s0, 60
+	S_ADDC_U32 s5, s2, 0
+	V_MOV_B32_e32 v2, s4
+	V_MOV_B32_e32 v3, s5
+	BUFFER_LOAD_DWORD v2, s[8:11] + v[2:3] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHLREV_B32_e32 v3, 7, v2
+	V_MOV_B32_e32 v4, -512
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v5, v0, v3
+	V_ASHRREV_I32_e32 v6, 31, v5
+	V_LSHL_B64 v[7:8], v[5:6], 2
+	V_LSHR_B64 v[5:6], v[5:6], 30
+	S_ADD_I32 s4, s0, 52
+	S_ADDC_U32 s5, s2, 0
+	S_LOAD_DWORDX2 s[4:5], s[4:5], 0
+	S_WAITCNT lgkmcnt(0)
+	S_LSHR_B64 s[6:7], s[4:5], 32
+	V_ADD_I32_e32 v7, s4, v7
+	V_ADDC_U32_e32 v8, s6, v5
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[7:8] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_MOV_B32_e32 v6, 65280
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_MOV_B32_e32 v8, 16711680
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ASHRREV_I32_e32 v1, 31, v0
+	V_LSHL_B64 v[9:10], v[0:1], 2
+	V_LSHR_B64 v[11:12], v[0:1], 30
+	S_ADD_I32 s0, s0, 44
+	S_ADDC_U32 s1, s2, 0
+	S_LOAD_DWORDX2 s[0:1], s[0:1], 0
+	S_WAITCNT lgkmcnt(0)
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	S_ADD_I32 s12, s0, 53248
+	S_ADDC_U32 s13, s2, 0
+	S_LSHR_B64 s[14:15], s[12:13], 32
+	V_ADD_I32_e32 v13, s12, v9
+	V_ADDC_U32_e32 v14, s14, v11
+	BUFFER_STORE_DWORD v3, s[8:11] + v[13:14] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 4, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v15, v0, v3
+	V_ASHRREV_I32_e32 v16, 31, v15
+	V_LSHL_B64 v[17:18], v[15:16], 2
+	V_LSHR_B64 v[15:16], v[15:16], 30
+	V_ADD_I32_e32 v17, s4, v17
+	V_ADDC_U32_e32 v18, s6, v15
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[17:18] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v15, 512, v0
+	V_ASHRREV_I32_e32 v16, 31, v15
+	V_LSHL_B64 v[17:18], v[15:16], 2
+	V_LSHR_B64 v[15:16], v[15:16], 30
+	V_ADD_I32_e32 v19, s12, v17
+	V_ADDC_U32_e32 v20, s14, v15
+	BUFFER_STORE_DWORD v3, s[8:11] + v[19:20] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 8, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v21, v0, v3
+	V_ASHRREV_I32_e32 v22, 31, v21
+	V_LSHL_B64 v[23:24], v[21:22], 2
+	V_LSHR_B64 v[21:22], v[21:22], 30
+	V_ADD_I32_e32 v23, s4, v23
+	V_ADDC_U32_e32 v24, s6, v21
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[23:24] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v21, 1024, v0
+	V_ASHRREV_I32_e32 v22, 31, v21
+	V_LSHL_B64 v[23:24], v[21:22], 2
+	V_LSHR_B64 v[21:22], v[21:22], 30
+	V_ADD_I32_e32 v25, s12, v23
+	V_ADDC_U32_e32 v26, s14, v21
+	BUFFER_STORE_DWORD v3, s[8:11] + v[25:26] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 12, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v27, v0, v3
+	V_ASHRREV_I32_e32 v28, 31, v27
+	V_LSHL_B64 v[29:30], v[27:28], 2
+	V_LSHR_B64 v[27:28], v[27:28], 30
+	V_ADD_I32_e32 v29, s4, v29
+	V_ADDC_U32_e32 v30, s6, v27
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[29:30] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v27, 1536, v0
+	V_ASHRREV_I32_e32 v28, 31, v27
+	V_LSHL_B64 v[29:30], v[27:28], 2
+	V_LSHR_B64 v[27:28], v[27:28], 30
+	V_ADD_I32_e32 v31, s12, v29
+	V_ADDC_U32_e32 v32, s14, v27
+	BUFFER_STORE_DWORD v3, s[8:11] + v[31:32] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 16, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v33, v0, v3
+	V_ASHRREV_I32_e32 v34, 31, v33
+	V_LSHL_B64 v[35:36], v[33:34], 2
+	V_LSHR_B64 v[33:34], v[33:34], 30
+	V_ADD_I32_e32 v35, s4, v35
+	V_ADDC_U32_e32 v36, s6, v33
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[35:36] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v33, 2048, v0
+	V_ASHRREV_I32_e32 v34, 31, v33
+	V_LSHL_B64 v[35:36], v[33:34], 2
+	V_LSHR_B64 v[33:34], v[33:34], 30
+	V_ADD_I32_e32 v37, s12, v35
+	V_ADDC_U32_e32 v38, s14, v33
+	BUFFER_STORE_DWORD v3, s[8:11] + v[37:38] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 20, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v39, v0, v3
+	V_ASHRREV_I32_e32 v40, 31, v39
+	V_LSHL_B64 v[41:42], v[39:40], 2
+	V_LSHR_B64 v[39:40], v[39:40], 30
+	V_ADD_I32_e32 v41, s4, v41
+	V_ADDC_U32_e32 v42, s6, v39
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[41:42] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v39, 2560, v0
+	V_ASHRREV_I32_e32 v40, 31, v39
+	V_LSHL_B64 v[41:42], v[39:40], 2
+	V_LSHR_B64 v[39:40], v[39:40], 30
+	V_ADD_I32_e32 v43, s12, v41
+	V_ADDC_U32_e32 v44, s14, v39
+	BUFFER_STORE_DWORD v3, s[8:11] + v[43:44] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 24, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v45, v0, v3
+	V_ASHRREV_I32_e32 v46, 31, v45
+	V_LSHL_B64 v[47:48], v[45:46], 2
+	V_LSHR_B64 v[45:46], v[45:46], 30
+	V_ADD_I32_e32 v47, s4, v47
+	V_ADDC_U32_e32 v48, s6, v45
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[47:48] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v45, 3072, v0
+	V_ASHRREV_I32_e32 v46, 31, v45
+	V_LSHL_B64 v[47:48], v[45:46], 2
+	V_LSHR_B64 v[45:46], v[45:46], 30
+	V_ADD_I32_e32 v49, s12, v47
+	V_ADDC_U32_e32 v50, s14, v45
+	BUFFER_STORE_DWORD v3, s[8:11] + v[49:50] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 28, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v51, v0, v3
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[53:54], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v53, s4, v53
+	V_ADDC_U32_e32 v54, s6, v51
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[53:54] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v51, 3584, v0
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[53:54], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v55, s12, v53
+	V_ADDC_U32_e32 v56, s14, v51
+	BUFFER_STORE_DWORD v3, s[8:11] + v[55:56] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 32, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[59:60], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v59, s4, v59
+	V_ADDC_U32_e32 v60, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 4096, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[59:60], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v59, s12, v59
+	V_ADDC_U32_e32 v60, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 36, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[61:62], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v61, s4, v61
+	V_ADDC_U32_e32 v62, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 4608, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[61:62], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v61, s12, v61
+	V_ADDC_U32_e32 v62, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 40, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[63:64], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v63, s4, v63
+	V_ADDC_U32_e32 v64, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 5120, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[63:64], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v63, s12, v63
+	V_ADDC_U32_e32 v64, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 44, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[65:66], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v65, s4, v65
+	V_ADDC_U32_e32 v66, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[65:66] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 5632, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[65:66], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v65, s12, v65
+	V_ADDC_U32_e32 v66, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[65:66] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 48, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[67:68], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v67, s4, v67
+	V_ADDC_U32_e32 v68, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 6144, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[67:68], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v67, s12, v67
+	V_ADDC_U32_e32 v68, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 52, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[69:70], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v69, s4, v69
+	V_ADDC_U32_e32 v70, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 6656, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[69:70], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v69, s12, v69
+	V_ADDC_U32_e32 v70, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v3, 56, v2
+	V_LSHLREV_B32_e32 v3, 7, v3
+	V_AND_B32_e32 v3, v3, v4
+	V_ADD_I32_e32 v57, v0, v3
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[71:72], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v71, s4, v71
+	V_ADDC_U32_e32 v72, s6, v57
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v5, 8, v3
+	V_AND_B32_e32 v5, v5, v6
+	V_LSHRREV_B32_e32 v7, 24, v3
+	V_OR_B32_e32 v5, v7, v5
+	V_LSHLREV_B32_e32 v7, 8, v3
+	V_AND_B32_e32 v7, v7, v8
+	V_LSHLREV_B32_e32 v3, 24, v3
+	V_OR_B32_e32 v3, v3, v7
+	V_OR_B32_e32 v3, v3, v5
+	V_ADD_I32_e32 v57, 7168, v0
+	V_ASHRREV_I32_e32 v58, 31, v57
+	V_LSHL_B64 v[71:72], v[57:58], 2
+	V_LSHR_B64 v[57:58], v[57:58], 30
+	V_ADD_I32_e32 v71, s12, v71
+	V_ADDC_U32_e32 v72, s14, v57
+	BUFFER_STORE_DWORD v3, s[8:11] + v[71:72] + 0
+	V_ADD_I32_e32 v2, 60, v2
+	V_LSHLREV_B32_e32 v2, 7, v2
+	V_AND_B32_e32 v2, v2, v4
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v2, v0, v2
+	V_ASHRREV_I32_e32 v3, 31, v2
+	V_LSHL_B64 v[4:5], v[2:3], 2
+	V_LSHR_B64 v[2:3], v[2:3], 30
+	V_ADD_I32_e32 v4, s4, v4
+	V_ADDC_U32_e32 v5, s6, v2
+	BUFFER_LOAD_DWORD v2, s[8:11] + v[4:5] + 0
+	S_WAITCNT vmcnt(0) 
+	V_LSHRREV_B32_e32 v3, 8, v2
+	V_AND_B32_e32 v3, v3, v6
+	V_LSHRREV_B32_e32 v4, 24, v2
+	V_OR_B32_e32 v3, v4, v3
+	V_LSHLREV_B32_e32 v4, 8, v2
+	V_AND_B32_e32 v4, v4, v8
+	V_LSHLREV_B32_e32 v2, 24, v2
+	V_OR_B32_e32 v2, v2, v4
+	V_OR_B32_e32 v2, v2, v3
+	V_ADD_I32_e32 v3, 7680, v0
+	V_ASHRREV_I32_e32 v4, 31, v3
+	V_LSHL_B64 v[5:6], v[3:4], 2
+	V_LSHR_B64 v[3:4], v[3:4], 30
+	V_ADD_I32_e32 v5, s12, v5
+	V_ADDC_U32_e32 v6, s14, v3
+	BUFFER_STORE_DWORD v2, s[8:11] + v[5:6] + 0
+	BUFFER_LOAD_DWORD v3, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ALIGNBIT_B32 v4, v3, v3, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v7, 10, v3
+	V_XOR_B32_e32 v4, v7, v4
+	V_ALIGNBIT_B32 v7, v3, v3, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v7
+	BUFFER_LOAD_DWORD v7, s[8:11] + v[19:20] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v8, v7, v7, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v57, 3, v7
+	V_XOR_B32_e32 v8, v57, v8
+	V_ALIGNBIT_B32 v57, v7, v7, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v57
+	BUFFER_LOAD_DWORD v13, s[8:11] + v[13:14] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v8, v13, v8
+	BUFFER_LOAD_DWORD v14, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v8, v14, v8
+	V_ADD_I32_e32 v4, v4, v8
+	BUFFER_LOAD_DWORD v8, s[8:11] + v[69:70] + 0
+	BUFFER_LOAD_DWORD v57, s[8:11] + v[67:68] + 0
+	BUFFER_LOAD_DWORD v58, s[8:11] + v[65:66] + 0
+	BUFFER_LOAD_DWORD v73, s[8:11] + v[63:64] + 0
+	BUFFER_LOAD_DWORD v74, s[8:11] + v[59:60] + 0
+	BUFFER_LOAD_DWORD v75, s[8:11] + v[55:56] + 0
+	BUFFER_LOAD_DWORD v76, s[8:11] + v[49:50] + 0
+	BUFFER_LOAD_DWORD v77, s[8:11] + v[43:44] + 0
+	BUFFER_LOAD_DWORD v78, s[8:11] + v[37:38] + 0
+	BUFFER_LOAD_DWORD v79, s[8:11] + v[31:32] + 0
+	BUFFER_LOAD_DWORD v80, s[8:11] + v[25:26] + 0
+	S_ADD_I32 s0, s0, 4096
+	S_ADDC_U32 s1, s2, 0
+	S_LSHR_B64 s[2:3], s[0:1], 32
+	V_ADD_I32_e32 v29, s0, v29
+	V_ADDC_U32_e32 v30, s2, v27
+	BUFFER_LOAD_DWORD v27, s[8:11] + v[29:30] + 0
+	V_ADD_I32_e32 v53, s0, v53
+	V_ADDC_U32_e32 v54, s2, v51
+	BUFFER_LOAD_DWORD v28, s[8:11] + v[53:54] + 0
+	V_ADD_I32_e32 v47, s0, v47
+	V_ADDC_U32_e32 v48, s2, v45
+	BUFFER_LOAD_DWORD v45, s[8:11] + v[47:48] + 0
+	V_ADD_I32_e32 v41, s0, v41
+	V_ADDC_U32_e32 v42, s2, v39
+	BUFFER_LOAD_DWORD v39, s[8:11] + v[41:42] + 0
+	V_ADD_I32_e32 v35, s0, v35
+	V_ADDC_U32_e32 v36, s2, v33
+	BUFFER_LOAD_DWORD v33, s[8:11] + v[35:36] + 0
+	V_ADD_I32_e32 v9, s0, v9
+	V_ADDC_U32_e32 v10, s2, v11
+	BUFFER_LOAD_DWORD v11, s[8:11] + v[9:10] + 0
+	V_ADD_I32_e32 v23, s0, v23
+	V_ADDC_U32_e32 v24, s2, v21
+	BUFFER_LOAD_DWORD v12, s[8:11] + v[23:24] + 0
+	V_ADD_I32_e32 v17, s0, v17
+	V_ADDC_U32_e32 v18, s2, v15
+	BUFFER_LOAD_DWORD v15, s[8:11] + v[17:18] + 0
+	V_ADD_I32_e32 v21, 8192, v0
+	V_ASHRREV_I32_e32 v22, 31, v21
+	V_LSHL_B64 v[51:52], v[21:22], 2
+	V_LSHR_B64 v[21:22], v[21:22], 30
+	V_ADD_I32_e32 v51, s12, v51
+	V_ADDC_U32_e32 v52, s14, v21
+	BUFFER_STORE_DWORD v4, s[8:11] + v[51:52] + 0
+	BUFFER_LOAD_DWORD v16, s[8:11] + v[63:64] + 0
+	BUFFER_LOAD_DWORD v19, s[8:11] + v[19:20] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v16, v16, v19
+	BUFFER_LOAD_DWORD v19, s[8:11] + v[5:6] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v20, v19, v19, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v21, 10, v19
+	V_XOR_B32_e32 v20, v21, v20
+	V_ALIGNBIT_B32 v19, v19, v19, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v19, v20, v19
+	V_ADD_I32_e32 v16, v19, v16
+	BUFFER_LOAD_DWORD v19, s[8:11] + v[25:26] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v20, v19, v19, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v21, 3, v19
+	V_XOR_B32_e32 v20, v21, v20
+	V_ALIGNBIT_B32 v21, v19, v19, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v20, v20, v21
+	V_ADD_I32_e32 v16, v20, v16
+	V_ADD_I32_e32 v20, 8704, v0
+	V_ASHRREV_I32_e32 v21, 31, v20
+	V_LSHL_B64 v[25:26], v[20:21], 2
+	V_LSHR_B64 v[20:21], v[20:21], 30
+	V_ADD_I32_e32 v25, s12, v25
+	V_ADDC_U32_e32 v26, s14, v20
+	BUFFER_STORE_DWORD v16, s[8:11] + v[25:26] + 0
+	BUFFER_LOAD_DWORD v20, s[8:11] + v[65:66] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v19, v20, v19
+	BUFFER_LOAD_DWORD v20, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v21, v20, v20, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v22, 10, v20
+	V_XOR_B32_e32 v21, v22, v21
+	V_ALIGNBIT_B32 v20, v20, v20, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v20, v21, v20
+	V_ADD_I32_e32 v19, v20, v19
+	BUFFER_LOAD_DWORD v20, s[8:11] + v[31:32] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v21, v20, v20, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v22, 3, v20
+	V_XOR_B32_e32 v21, v22, v21
+	V_ALIGNBIT_B32 v22, v20, v20, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v21, v21, v22
+	V_ADD_I32_e32 v19, v21, v19
+	V_ADD_I32_e32 v21, 9216, v0
+	V_ASHRREV_I32_e32 v22, 31, v21
+	V_LSHL_B64 v[31:32], v[21:22], 2
+	V_LSHR_B64 v[21:22], v[21:22], 30
+	V_ADD_I32_e32 v31, s12, v31
+	V_ADDC_U32_e32 v32, s14, v21
+	BUFFER_STORE_DWORD v19, s[8:11] + v[31:32] + 0
+	BUFFER_LOAD_DWORD v21, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v20, v21, v20
+	BUFFER_LOAD_DWORD v21, s[8:11] + v[25:26] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v22, v21, v21, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v34, 10, v21
+	V_XOR_B32_e32 v22, v34, v22
+	V_ALIGNBIT_B32 v21, v21, v21, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v21, v22, v21
+	V_ADD_I32_e32 v20, v21, v20
+	BUFFER_LOAD_DWORD v21, s[8:11] + v[37:38] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v22, v21, v21, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v34, 3, v21
+	V_XOR_B32_e32 v22, v34, v22
+	V_ALIGNBIT_B32 v34, v21, v21, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v22, v22, v34
+	V_ADD_I32_e32 v20, v22, v20
+	V_ADD_I32_e32 v37, 9728, v0
+	V_ASHRREV_I32_e32 v38, 31, v37
+	V_LSHL_B64 v[81:82], v[37:38], 2
+	V_LSHR_B64 v[37:38], v[37:38], 30
+	V_ADD_I32_e32 v81, s12, v81
+	V_ADDC_U32_e32 v82, s14, v37
+	BUFFER_STORE_DWORD v20, s[8:11] + v[81:82] + 0
+	BUFFER_LOAD_DWORD v22, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v21, v22, v21
+	BUFFER_LOAD_DWORD v22, s[8:11] + v[31:32] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v34, v22, v22, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v37, 10, v22
+	V_XOR_B32_e32 v34, v37, v34
+	V_ALIGNBIT_B32 v22, v22, v22, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v22, v34, v22
+	V_ADD_I32_e32 v21, v22, v21
+	BUFFER_LOAD_DWORD v22, s[8:11] + v[43:44] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v34, v22, v22, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v37, 3, v22
+	V_XOR_B32_e32 v34, v37, v34
+	V_ALIGNBIT_B32 v37, v22, v22, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v34, v34, v37
+	V_ADD_I32_e32 v21, v34, v21
+	V_ADD_I32_e32 v37, 10240, v0
+	V_ASHRREV_I32_e32 v38, 31, v37
+	V_LSHL_B64 v[43:44], v[37:38], 2
+	V_LSHR_B64 v[37:38], v[37:38], 30
+	V_ADD_I32_e32 v43, s12, v43
+	V_ADDC_U32_e32 v44, s14, v37
+	BUFFER_STORE_DWORD v21, s[8:11] + v[43:44] + 0
+	BUFFER_LOAD_DWORD v34, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v22, v34, v22
+	BUFFER_LOAD_DWORD v34, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v37, v34, v34, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v38, 10, v34
+	V_XOR_B32_e32 v37, v38, v37
+	V_ALIGNBIT_B32 v34, v34, v34, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v34, v37, v34
+	V_ADD_I32_e32 v22, v34, v22
+	BUFFER_LOAD_DWORD v34, s[8:11] + v[49:50] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v37, v34, v34, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v38, 3, v34
+	V_XOR_B32_e32 v37, v38, v37
+	V_ALIGNBIT_B32 v38, v34, v34, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v37, v37, v38
+	V_ADD_I32_e32 v22, v37, v22
+	V_ADD_I32_e32 v37, 10752, v0
+	V_ASHRREV_I32_e32 v38, 31, v37
+	V_LSHL_B64 v[49:50], v[37:38], 2
+	V_LSHR_B64 v[37:38], v[37:38], 30
+	V_ADD_I32_e32 v49, s12, v49
+	V_ADDC_U32_e32 v50, s14, v37
+	BUFFER_STORE_DWORD v22, s[8:11] + v[49:50] + 0
+	BUFFER_LOAD_DWORD v37, s[8:11] + v[5:6] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v34, v37, v34
+	BUFFER_LOAD_DWORD v37, s[8:11] + v[43:44] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v38, v37, v37, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v40, 10, v37
+	V_XOR_B32_e32 v38, v40, v38
+	V_ALIGNBIT_B32 v37, v37, v37, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v37, v38, v37
+	V_ADD_I32_e32 v34, v37, v34
+	BUFFER_LOAD_DWORD v37, s[8:11] + v[55:56] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v38, v37, v37, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v40, 3, v37
+	V_XOR_B32_e32 v38, v40, v38
+	V_ALIGNBIT_B32 v40, v37, v37, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v38, v38, v40
+	V_ADD_I32_e32 v34, v38, v34
+	V_ADD_I32_e32 v55, 11264, v0
+	V_ASHRREV_I32_e32 v56, 31, v55
+	V_LSHL_B64 v[83:84], v[55:56], 2
+	V_LSHR_B64 v[55:56], v[55:56], 30
+	V_ADD_I32_e32 v83, s12, v83
+	V_ADDC_U32_e32 v84, s14, v55
+	BUFFER_STORE_DWORD v34, s[8:11] + v[83:84] + 0
+	BUFFER_LOAD_DWORD v38, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v37, v38, v37
+	BUFFER_LOAD_DWORD v38, s[8:11] + v[49:50] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v40, v38, v38, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v46, 10, v38
+	V_XOR_B32_e32 v40, v46, v40
+	V_ALIGNBIT_B32 v38, v38, v38, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v38, v40, v38
+	V_ADD_I32_e32 v37, v38, v37
+	BUFFER_LOAD_DWORD v38, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v40, v38, v38, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v46, 3, v38
+	V_XOR_B32_e32 v40, v46, v40
+	V_ALIGNBIT_B32 v46, v38, v38, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v40, v40, v46
+	V_ADD_I32_e32 v37, v40, v37
+	V_ADD_I32_e32 v55, 11776, v0
+	V_ASHRREV_I32_e32 v56, 31, v55
+	V_LSHL_B64 v[59:60], v[55:56], 2
+	V_LSHR_B64 v[55:56], v[55:56], 30
+	V_ADD_I32_e32 v59, s12, v59
+	V_ADDC_U32_e32 v60, s14, v55
+	BUFFER_STORE_DWORD v37, s[8:11] + v[59:60] + 0
+	BUFFER_LOAD_DWORD v40, s[8:11] + v[25:26] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v38, v40, v38
+	BUFFER_LOAD_DWORD v40, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v46, v40, v40, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v55, 10, v40
+	V_XOR_B32_e32 v46, v55, v46
+	V_ALIGNBIT_B32 v40, v40, v40, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v40, v46, v40
+	V_ADD_I32_e32 v38, v40, v38
+	BUFFER_LOAD_DWORD v40, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v46, v40, v40, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v55, 3, v40
+	V_XOR_B32_e32 v46, v55, v46
+	V_ALIGNBIT_B32 v55, v40, v40, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v46, v46, v55
+	V_ADD_I32_e32 v38, v46, v38
+	V_ADD_I32_e32 v55, 12288, v0
+	V_ASHRREV_I32_e32 v56, 31, v55
+	V_LSHL_B64 v[61:62], v[55:56], 2
+	V_LSHR_B64 v[55:56], v[55:56], 30
+	V_ADD_I32_e32 v61, s12, v61
+	V_ADDC_U32_e32 v62, s14, v55
+	BUFFER_STORE_DWORD v38, s[8:11] + v[61:62] + 0
+	BUFFER_LOAD_DWORD v46, s[8:11] + v[31:32] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v40, v46, v40
+	BUFFER_LOAD_DWORD v46, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v55, v46, v46, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v56, 10, v46
+	V_XOR_B32_e32 v55, v56, v55
+	V_ALIGNBIT_B32 v46, v46, v46, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v46, v55, v46
+	V_ADD_I32_e32 v40, v46, v40
+	BUFFER_LOAD_DWORD v46, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v55, v46, v46, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v56, 3, v46
+	V_XOR_B32_e32 v55, v56, v55
+	V_ALIGNBIT_B32 v56, v46, v46, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v55, v55, v56
+	V_ADD_I32_e32 v40, v55, v40
+	V_ADD_I32_e32 v55, 12800, v0
+	V_ASHRREV_I32_e32 v56, 31, v55
+	V_LSHL_B64 v[63:64], v[55:56], 2
+	V_LSHR_B64 v[55:56], v[55:56], 30
+	V_ADD_I32_e32 v63, s12, v63
+	V_ADDC_U32_e32 v64, s14, v55
+	BUFFER_STORE_DWORD v40, s[8:11] + v[63:64] + 0
+	BUFFER_LOAD_DWORD v55, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v46, v55, v46
+	BUFFER_LOAD_DWORD v55, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v56, v55, v55, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v85, 10, v55
+	V_XOR_B32_e32 v56, v85, v56
+	V_ALIGNBIT_B32 v55, v55, v55, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v55, v56, v55
+	V_ADD_I32_e32 v46, v55, v46
+	BUFFER_LOAD_DWORD v55, s[8:11] + v[65:66] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v56, v55, v55, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v65, 3, v55
+	V_XOR_B32_e32 v56, v65, v56
+	V_ALIGNBIT_B32 v65, v55, v55, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v56, v56, v65
+	V_ADD_I32_e32 v46, v56, v46
+	V_ADD_I32_e32 v65, 13312, v0
+	V_ASHRREV_I32_e32 v66, 31, v65
+	V_LSHL_B64 v[85:86], v[65:66], 2
+	V_LSHR_B64 v[65:66], v[65:66], 30
+	V_ADD_I32_e32 v85, s12, v85
+	V_ADDC_U32_e32 v86, s14, v65
+	BUFFER_STORE_DWORD v46, s[8:11] + v[85:86] + 0
+	BUFFER_LOAD_DWORD v56, s[8:11] + v[43:44] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v55, v56, v55
+	BUFFER_LOAD_DWORD v56, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v65, v56, v56, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v56
+	V_XOR_B32_e32 v65, v66, v65
+	V_ALIGNBIT_B32 v56, v56, v56, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v56, v65, v56
+	V_ADD_I32_e32 v55, v56, v55
+	BUFFER_LOAD_DWORD v56, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v65, v56, v56, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 3, v56
+	V_XOR_B32_e32 v65, v66, v65
+	V_ALIGNBIT_B32 v66, v56, v56, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v65, v65, v66
+	V_ADD_I32_e32 v55, v65, v55
+	V_ADD_I32_e32 v65, 13824, v0
+	V_ASHRREV_I32_e32 v66, 31, v65
+	V_LSHL_B64 v[67:68], v[65:66], 2
+	V_LSHR_B64 v[65:66], v[65:66], 30
+	V_ADD_I32_e32 v67, s12, v67
+	V_ADDC_U32_e32 v68, s14, v65
+	BUFFER_STORE_DWORD v55, s[8:11] + v[67:68] + 0
+	BUFFER_LOAD_DWORD v65, s[8:11] + v[49:50] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v56, v65, v56
+	BUFFER_LOAD_DWORD v65, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v65, v65, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v87, 10, v65
+	V_XOR_B32_e32 v66, v87, v66
+	V_ALIGNBIT_B32 v65, v65, v65, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v65, v66, v65
+	V_ADD_I32_e32 v56, v65, v56
+	BUFFER_LOAD_DWORD v65, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v65, v65, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v69, 3, v65
+	V_XOR_B32_e32 v66, v69, v66
+	V_ALIGNBIT_B32 v69, v65, v65, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v66, v66, v69
+	V_ADD_I32_e32 v56, v66, v56
+	V_ADD_I32_e32 v69, 14336, v0
+	V_ASHRREV_I32_e32 v70, 31, v69
+	V_LSHL_B64 v[87:88], v[69:70], 2
+	V_LSHR_B64 v[69:70], v[69:70], 30
+	V_ADD_I32_e32 v87, s12, v87
+	V_ADDC_U32_e32 v88, s14, v69
+	BUFFER_STORE_DWORD v56, s[8:11] + v[87:88] + 0
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v65, v66, v65
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v69, v66, v66, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v70, 10, v66
+	V_XOR_B32_e32 v69, v70, v69
+	V_ALIGNBIT_B32 v66, v66, v66, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v66, v69, v66
+	V_ADD_I32_e32 v65, v66, v65
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v69, v66, v66, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v70, 3, v66
+	V_XOR_B32_e32 v69, v70, v69
+	V_ALIGNBIT_B32 v70, v66, v66, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v69, v69, v70
+	V_ADD_I32_e32 v65, v69, v65
+	V_ADD_I32_e32 v69, 14848, v0
+	V_ASHRREV_I32_e32 v70, 31, v69
+	V_LSHL_B64 v[71:72], v[69:70], 2
+	V_LSHR_B64 v[69:70], v[69:70], 30
+	V_ADD_I32_e32 v71, s12, v71
+	V_ADDC_U32_e32 v72, s14, v69
+	BUFFER_STORE_DWORD v65, s[8:11] + v[71:72] + 0
+	BUFFER_LOAD_DWORD v69, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v66, v69, v66
+	BUFFER_LOAD_DWORD v69, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v70, v69, v69, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v89, 10, v69
+	V_XOR_B32_e32 v70, v89, v70
+	V_ALIGNBIT_B32 v69, v69, v69, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v69, v70, v69
+	V_ADD_I32_e32 v66, v69, v66
+	BUFFER_LOAD_DWORD v5, s[8:11] + v[5:6] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v6, v5, v5, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v69, 3, v5
+	V_XOR_B32_e32 v6, v69, v6
+	V_ALIGNBIT_B32 v69, v5, v5, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v69
+	V_ADD_I32_e32 v6, v6, v66
+	V_ADD_I32_e32 v69, 15360, v0
+	V_ASHRREV_I32_e32 v70, 31, v69
+	V_LSHL_B64 v[89:90], v[69:70], 2
+	V_LSHR_B64 v[69:70], v[69:70], 30
+	V_ADD_I32_e32 v89, s12, v89
+	V_ADDC_U32_e32 v90, s14, v69
+	BUFFER_STORE_DWORD v6, s[8:11] + v[89:90] + 0
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v5, v66, v5
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v69, v66, v66, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v70, 10, v66
+	V_XOR_B32_e32 v69, v70, v69
+	V_ALIGNBIT_B32 v66, v66, v66, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v66, v69, v66
+	V_ADD_I32_e32 v5, v66, v5
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v52, v51, v51, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 3, v51
+	V_XOR_B32_e32 v52, v66, v52
+	V_ALIGNBIT_B32 v66, v51, v51, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v52, v52, v66
+	V_ADD_I32_e32 v5, v52, v5
+	V_ADD_I32_e32 v69, 15872, v0
+	V_ASHRREV_I32_e32 v70, 31, v69
+	V_LSHL_B64 v[91:92], v[69:70], 2
+	V_LSHR_B64 v[69:70], v[69:70], 30
+	V_ADD_I32_e32 v91, s12, v91
+	V_ADDC_U32_e32 v92, s14, v69
+	BUFFER_STORE_DWORD v5, s[8:11] + v[91:92] + 0
+	BUFFER_LOAD_DWORD v52, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v51, v52, v51
+	BUFFER_LOAD_DWORD v52, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v52, v52, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v69, 10, v52
+	V_XOR_B32_e32 v66, v69, v66
+	V_ALIGNBIT_B32 v52, v52, v52, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v52, v66, v52
+	V_ADD_I32_e32 v51, v52, v51
+	BUFFER_LOAD_DWORD v25, s[8:11] + v[25:26] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v26, v25, v25, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v52, 3, v25
+	V_XOR_B32_e32 v26, v52, v26
+	V_ALIGNBIT_B32 v52, v25, v25, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v26, v26, v52
+	V_ADD_I32_e32 v26, v26, v51
+	V_ADD_I32_e32 v51, 16384, v0
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[69:70], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v69, s12, v69
+	V_ADDC_U32_e32 v70, s14, v51
+	BUFFER_STORE_DWORD v26, s[8:11] + v[69:70] + 0
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v25, v51, v25
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v52, v51, v51, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v51
+	V_XOR_B32_e32 v52, v66, v52
+	V_ALIGNBIT_B32 v51, v51, v51, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v51, v52, v51
+	V_ADD_I32_e32 v25, v51, v25
+	BUFFER_LOAD_DWORD v31, s[8:11] + v[31:32] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v32, v31, v31, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v51, 3, v31
+	V_XOR_B32_e32 v32, v51, v32
+	V_ALIGNBIT_B32 v51, v31, v31, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v32, v32, v51
+	V_ADD_I32_e32 v25, v32, v25
+	V_ADD_I32_e32 v51, 16896, v0
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[93:94], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v93, s12, v93
+	V_ADDC_U32_e32 v94, s14, v51
+	BUFFER_STORE_DWORD v25, s[8:11] + v[93:94] + 0
+	BUFFER_LOAD_DWORD v32, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v31, v32, v31
+	BUFFER_LOAD_DWORD v32, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v51, v32, v32, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v52, 10, v32
+	V_XOR_B32_e32 v51, v52, v51
+	V_ALIGNBIT_B32 v32, v32, v32, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v32, v51, v32
+	V_ADD_I32_e32 v31, v32, v31
+	BUFFER_LOAD_DWORD v32, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v51, v32, v32, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v52, 3, v32
+	V_XOR_B32_e32 v51, v52, v51
+	V_ALIGNBIT_B32 v52, v32, v32, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v51, v51, v52
+	V_ADD_I32_e32 v31, v51, v31
+	V_ADD_I32_e32 v51, 17408, v0
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[81:82], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v81, s12, v81
+	V_ADDC_U32_e32 v82, s14, v51
+	BUFFER_STORE_DWORD v31, s[8:11] + v[81:82] + 0
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v32, v51, v32
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v52, v51, v51, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v51
+	V_XOR_B32_e32 v52, v66, v52
+	V_ALIGNBIT_B32 v51, v51, v51, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v51, v52, v51
+	V_ADD_I32_e32 v32, v51, v32
+	BUFFER_LOAD_DWORD v43, s[8:11] + v[43:44] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v44, v43, v43, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v51, 3, v43
+	V_XOR_B32_e32 v44, v51, v44
+	V_ALIGNBIT_B32 v51, v43, v43, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v44, v44, v51
+	V_ADD_I32_e32 v32, v44, v32
+	V_ADD_I32_e32 v51, 17920, v0
+	V_ASHRREV_I32_e32 v52, 31, v51
+	V_LSHL_B64 v[95:96], v[51:52], 2
+	V_LSHR_B64 v[51:52], v[51:52], 30
+	V_ADD_I32_e32 v95, s12, v95
+	V_ADDC_U32_e32 v96, s14, v51
+	BUFFER_STORE_DWORD v32, s[8:11] + v[95:96] + 0
+	BUFFER_LOAD_DWORD v44, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v43, v44, v43
+	BUFFER_LOAD_DWORD v44, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v51, v44, v44, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v52, 10, v44
+	V_XOR_B32_e32 v51, v52, v51
+	V_ALIGNBIT_B32 v44, v44, v44, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v44, v51, v44
+	V_ADD_I32_e32 v43, v44, v43
+	BUFFER_LOAD_DWORD v44, s[8:11] + v[49:50] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v49, v44, v44, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v50, 3, v44
+	V_XOR_B32_e32 v49, v50, v49
+	V_ALIGNBIT_B32 v50, v44, v44, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v49, v49, v50
+	V_ADD_I32_e32 v43, v49, v43
+	V_ADD_I32_e32 v49, 18432, v0
+	V_ASHRREV_I32_e32 v50, 31, v49
+	V_LSHL_B64 v[51:52], v[49:50], 2
+	V_LSHR_B64 v[49:50], v[49:50], 30
+	V_ADD_I32_e32 v51, s12, v51
+	V_ADDC_U32_e32 v52, s14, v49
+	BUFFER_STORE_DWORD v43, s[8:11] + v[51:52] + 0
+	BUFFER_LOAD_DWORD v49, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v44, v49, v44
+	BUFFER_LOAD_DWORD v49, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v50, v49, v49, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v49
+	V_XOR_B32_e32 v50, v66, v50
+	V_ALIGNBIT_B32 v49, v49, v49, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v49, v50, v49
+	V_ADD_I32_e32 v44, v49, v44
+	BUFFER_LOAD_DWORD v49, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v50, v49, v49, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 3, v49
+	V_XOR_B32_e32 v50, v66, v50
+	V_ALIGNBIT_B32 v66, v49, v49, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v50, v50, v66
+	V_ADD_I32_e32 v44, v50, v44
+	V_ADD_I32_e32 v83, 18944, v0
+	V_ASHRREV_I32_e32 v84, 31, v83
+	V_LSHL_B64 v[97:98], v[83:84], 2
+	V_LSHR_B64 v[83:84], v[83:84], 30
+	V_ADD_I32_e32 v97, s12, v97
+	V_ADDC_U32_e32 v98, s14, v83
+	BUFFER_STORE_DWORD v44, s[8:11] + v[97:98] + 0
+	BUFFER_LOAD_DWORD v50, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v49, v50, v49
+	BUFFER_LOAD_DWORD v50, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v50, v50, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v83, 10, v50
+	V_XOR_B32_e32 v66, v83, v66
+	V_ALIGNBIT_B32 v50, v50, v50, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v50, v66, v50
+	V_ADD_I32_e32 v49, v50, v49
+	BUFFER_LOAD_DWORD v50, s[8:11] + v[59:60] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v59, v50, v50, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v60, 3, v50
+	V_XOR_B32_e32 v59, v60, v59
+	V_ALIGNBIT_B32 v60, v50, v50, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v59, v59, v60
+	V_ADD_I32_e32 v49, v59, v49
+	V_ADD_I32_e32 v59, 19456, v0
+	V_ASHRREV_I32_e32 v60, 31, v59
+	V_LSHL_B64 v[83:84], v[59:60], 2
+	V_LSHR_B64 v[59:60], v[59:60], 30
+	V_ADD_I32_e32 v83, s12, v83
+	V_ADDC_U32_e32 v84, s14, v59
+	BUFFER_STORE_DWORD v49, s[8:11] + v[83:84] + 0
+	BUFFER_LOAD_DWORD v59, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v50, v59, v50
+	BUFFER_LOAD_DWORD v59, s[8:11] + v[97:98] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v60, v59, v59, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v59
+	V_XOR_B32_e32 v60, v66, v60
+	V_ALIGNBIT_B32 v59, v59, v59, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v59, v60, v59
+	V_ADD_I32_e32 v50, v59, v50
+	BUFFER_LOAD_DWORD v59, s[8:11] + v[61:62] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v60, v59, v59, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v61, 3, v59
+	V_XOR_B32_e32 v60, v61, v60
+	V_ALIGNBIT_B32 v61, v59, v59, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v60, v60, v61
+	V_ADD_I32_e32 v50, v60, v50
+	V_ADD_I32_e32 v60, 19968, v0
+	V_ASHRREV_I32_e32 v61, 31, v60
+	V_LSHL_B64 v[99:100], v[60:61], 2
+	V_LSHR_B64 v[60:61], v[60:61], 30
+	V_ADD_I32_e32 v99, s12, v99
+	V_ADDC_U32_e32 v100, s14, v60
+	BUFFER_STORE_DWORD v50, s[8:11] + v[99:100] + 0
+	BUFFER_LOAD_DWORD v60, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v59, v60, v59
+	BUFFER_LOAD_DWORD v60, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v61, v60, v60, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v62, 10, v60
+	V_XOR_B32_e32 v61, v62, v61
+	V_ALIGNBIT_B32 v60, v60, v60, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v60, v61, v60
+	V_ADD_I32_e32 v59, v60, v59
+	BUFFER_LOAD_DWORD v60, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v61, v60, v60, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v62, 3, v60
+	V_XOR_B32_e32 v61, v62, v61
+	V_ALIGNBIT_B32 v62, v60, v60, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v61, v61, v62
+	V_ADD_I32_e32 v59, v61, v59
+	V_ADD_I32_e32 v61, 20480, v0
+	V_ASHRREV_I32_e32 v62, 31, v61
+	V_LSHL_B64 v[63:64], v[61:62], 2
+	V_LSHR_B64 v[61:62], v[61:62], 30
+	V_ADD_I32_e32 v63, s12, v63
+	V_ADDC_U32_e32 v64, s14, v61
+	BUFFER_STORE_DWORD v59, s[8:11] + v[63:64] + 0
+	BUFFER_LOAD_DWORD v61, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v60, v61, v60
+	BUFFER_LOAD_DWORD v61, s[8:11] + v[99:100] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v62, v61, v61, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 10, v61
+	V_XOR_B32_e32 v62, v66, v62
+	V_ALIGNBIT_B32 v61, v61, v61, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v61, v62, v61
+	V_ADD_I32_e32 v60, v61, v60
+	BUFFER_LOAD_DWORD v61, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v62, v61, v61, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v66, 3, v61
+	V_XOR_B32_e32 v62, v66, v62
+	V_ALIGNBIT_B32 v66, v61, v61, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v62, v62, v66
+	V_ADD_I32_e32 v60, v62, v60
+	V_ADD_I32_e32 v85, 20992, v0
+	V_ASHRREV_I32_e32 v86, 31, v85
+	V_LSHL_B64 v[101:102], v[85:86], 2
+	V_LSHR_B64 v[85:86], v[85:86], 30
+	V_ADD_I32_e32 v101, s12, v101
+	V_ADDC_U32_e32 v102, s14, v85
+	BUFFER_STORE_DWORD v60, s[8:11] + v[101:102] + 0
+	BUFFER_LOAD_DWORD v62, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v61, v62, v61
+	BUFFER_LOAD_DWORD v62, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v62, v62, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v85, 10, v62
+	V_XOR_B32_e32 v66, v85, v66
+	V_ALIGNBIT_B32 v62, v62, v62, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v62, v66, v62
+	V_ADD_I32_e32 v61, v62, v61
+	BUFFER_LOAD_DWORD v62, s[8:11] + v[67:68] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v66, v62, v62, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v67, 3, v62
+	V_XOR_B32_e32 v66, v67, v66
+	V_ALIGNBIT_B32 v67, v62, v62, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v66, v66, v67
+	V_ADD_I32_e32 v61, v66, v61
+	V_ADD_I32_e32 v66, 21504, v0
+	V_ASHRREV_I32_e32 v67, 31, v66
+	V_LSHL_B64 v[85:86], v[66:67], 2
+	V_LSHR_B64 v[66:67], v[66:67], 30
+	V_ADD_I32_e32 v85, s12, v85
+	V_ADDC_U32_e32 v86, s14, v66
+	BUFFER_STORE_DWORD v61, s[8:11] + v[85:86] + 0
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v62, v66, v62
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[101:102] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v67, v66, v66, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v68, 10, v66
+	V_XOR_B32_e32 v67, v68, v67
+	V_ALIGNBIT_B32 v66, v66, v66, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v66, v67, v66
+	V_ADD_I32_e32 v62, v66, v62
+	BUFFER_LOAD_DWORD v66, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v67, v66, v66, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v68, 3, v66
+	V_XOR_B32_e32 v67, v68, v67
+	V_ALIGNBIT_B32 v68, v66, v66, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v67, v67, v68
+	V_ADD_I32_e32 v62, v67, v62
+	V_ADD_I32_e32 v67, 22016, v0
+	V_ASHRREV_I32_e32 v68, 31, v67
+	V_LSHL_B64 v[87:88], v[67:68], 2
+	V_LSHR_B64 v[67:68], v[67:68], 30
+	V_ADD_I32_e32 v87, s12, v87
+	V_ADDC_U32_e32 v88, s14, v67
+	BUFFER_STORE_DWORD v62, s[8:11] + v[87:88] + 0
+	BUFFER_LOAD_DWORD v67, s[8:11] + v[97:98] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v66, v67, v66
+	BUFFER_LOAD_DWORD v67, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v68, v67, v67, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v103, 10, v67
+	V_XOR_B32_e32 v68, v103, v68
+	V_ALIGNBIT_B32 v67, v67, v67, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v67, v68, v67
+	V_ADD_I32_e32 v66, v67, v66
+	BUFFER_LOAD_DWORD v67, s[8:11] + v[71:72] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v68, v67, v67, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v71, 3, v67
+	V_XOR_B32_e32 v68, v71, v68
+	V_ALIGNBIT_B32 v71, v67, v67, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v68, v68, v71
+	V_ADD_I32_e32 v66, v68, v66
+	V_ADD_I32_e32 v71, 22528, v0
+	V_ASHRREV_I32_e32 v72, 31, v71
+	V_LSHL_B64 v[103:104], v[71:72], 2
+	V_LSHR_B64 v[71:72], v[71:72], 30
+	V_ADD_I32_e32 v103, s12, v103
+	V_ADDC_U32_e32 v104, s14, v71
+	BUFFER_STORE_DWORD v66, s[8:11] + v[103:104] + 0
+	BUFFER_LOAD_DWORD v68, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v67, v68, v67
+	BUFFER_LOAD_DWORD v68, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v71, v68, v68, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v72, 10, v68
+	V_XOR_B32_e32 v71, v72, v71
+	V_ALIGNBIT_B32 v68, v68, v68, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v68, v71, v68
+	V_ADD_I32_e32 v67, v68, v67
+	BUFFER_LOAD_DWORD v68, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v71, v68, v68, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v72, 3, v68
+	V_XOR_B32_e32 v71, v72, v71
+	V_ALIGNBIT_B32 v72, v68, v68, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v71, v71, v72
+	V_ADD_I32_e32 v67, v71, v67
+	V_ADD_I32_e32 v71, 23040, v0
+	V_ASHRREV_I32_e32 v72, 31, v71
+	V_LSHL_B64 v[89:90], v[71:72], 2
+	V_LSHR_B64 v[71:72], v[71:72], 30
+	V_ADD_I32_e32 v89, s12, v89
+	V_ADDC_U32_e32 v90, s14, v71
+	BUFFER_STORE_DWORD v67, s[8:11] + v[89:90] + 0
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[99:100] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v68, v71, v68
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[103:104] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v72, v71, v71, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v105, 10, v71
+	V_XOR_B32_e32 v72, v105, v72
+	V_ALIGNBIT_B32 v71, v71, v71, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v71, v72, v71
+	V_ADD_I32_e32 v68, v71, v68
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v72, v71, v71, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v91, 3, v71
+	V_XOR_B32_e32 v72, v91, v72
+	V_ALIGNBIT_B32 v91, v71, v71, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v72, v72, v91
+	V_ADD_I32_e32 v68, v72, v68
+	V_ADD_I32_e32 v91, 23552, v0
+	V_ASHRREV_I32_e32 v92, 31, v91
+	V_LSHL_B64 v[105:106], v[91:92], 2
+	V_LSHR_B64 v[91:92], v[91:92], 30
+	V_ADD_I32_e32 v105, s12, v105
+	V_ADDC_U32_e32 v106, s14, v91
+	BUFFER_STORE_DWORD v68, s[8:11] + v[105:106] + 0
+	BUFFER_LOAD_DWORD v72, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v71, v72, v71
+	BUFFER_LOAD_DWORD v72, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v91, v72, v72, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v92, 10, v72
+	V_XOR_B32_e32 v91, v92, v91
+	V_ALIGNBIT_B32 v72, v72, v72, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v72, v91, v72
+	V_ADD_I32_e32 v71, v72, v71
+	BUFFER_LOAD_DWORD v69, s[8:11] + v[69:70] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v70, v69, v69, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v72, 3, v69
+	V_XOR_B32_e32 v70, v72, v70
+	V_ALIGNBIT_B32 v72, v69, v69, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v70, v70, v72
+	V_ADD_I32_e32 v70, v70, v71
+	V_ADD_I32_e32 v71, 24064, v0
+	V_ASHRREV_I32_e32 v72, 31, v71
+	V_LSHL_B64 v[91:92], v[71:72], 2
+	V_LSHR_B64 v[71:72], v[71:72], 30
+	V_ADD_I32_e32 v91, s12, v91
+	V_ADDC_U32_e32 v92, s14, v71
+	BUFFER_STORE_DWORD v70, s[8:11] + v[91:92] + 0
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[101:102] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v69, v71, v69
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[105:106] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v72, v71, v71, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v107, 10, v71
+	V_XOR_B32_e32 v72, v107, v72
+	V_ALIGNBIT_B32 v71, v71, v71, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v71, v72, v71
+	V_ADD_I32_e32 v69, v71, v69
+	BUFFER_LOAD_DWORD v71, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v72, v71, v71, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v93, 3, v71
+	V_XOR_B32_e32 v72, v93, v72
+	V_ALIGNBIT_B32 v93, v71, v71, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v72, v72, v93
+	V_ADD_I32_e32 v69, v72, v69
+	V_ADD_I32_e32 v93, 24576, v0
+	V_ASHRREV_I32_e32 v94, 31, v93
+	V_LSHL_B64 v[107:108], v[93:94], 2
+	V_LSHR_B64 v[93:94], v[93:94], 30
+	V_ADD_I32_e32 v107, s12, v107
+	V_ADDC_U32_e32 v108, s14, v93
+	BUFFER_STORE_DWORD v69, s[8:11] + v[107:108] + 0
+	BUFFER_LOAD_DWORD v72, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v71, v72, v71
+	BUFFER_LOAD_DWORD v72, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v93, v72, v72, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v94, 10, v72
+	V_XOR_B32_e32 v93, v94, v93
+	V_ALIGNBIT_B32 v72, v72, v72, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v72, v93, v72
+	V_ADD_I32_e32 v71, v72, v71
+	BUFFER_LOAD_DWORD v72, s[8:11] + v[81:82] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v81, v72, v72, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v82, 3, v72
+	V_XOR_B32_e32 v81, v82, v81
+	V_ALIGNBIT_B32 v82, v72, v72, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v81, v81, v82
+	V_ADD_I32_e32 v71, v81, v71
+	V_ADD_I32_e32 v81, 25088, v0
+	V_ASHRREV_I32_e32 v82, 31, v81
+	V_LSHL_B64 v[93:94], v[81:82], 2
+	V_LSHR_B64 v[81:82], v[81:82], 30
+	V_ADD_I32_e32 v93, s12, v93
+	V_ADDC_U32_e32 v94, s14, v81
+	BUFFER_STORE_DWORD v71, s[8:11] + v[93:94] + 0
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v72, v81, v72
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[107:108] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v82, v81, v81, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v109, 10, v81
+	V_XOR_B32_e32 v82, v109, v82
+	V_ALIGNBIT_B32 v81, v81, v81, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v81, v82, v81
+	V_ADD_I32_e32 v72, v81, v72
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v82, v81, v81, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v95, 3, v81
+	V_XOR_B32_e32 v82, v95, v82
+	V_ALIGNBIT_B32 v95, v81, v81, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v82, v82, v95
+	V_ADD_I32_e32 v72, v82, v72
+	V_ADD_I32_e32 v95, 25600, v0
+	V_ASHRREV_I32_e32 v96, 31, v95
+	V_LSHL_B64 v[109:110], v[95:96], 2
+	V_LSHR_B64 v[95:96], v[95:96], 30
+	V_ADD_I32_e32 v109, s12, v109
+	V_ADDC_U32_e32 v110, s14, v95
+	BUFFER_STORE_DWORD v72, s[8:11] + v[109:110] + 0
+	BUFFER_LOAD_DWORD v82, s[8:11] + v[103:104] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v81, v82, v81
+	BUFFER_LOAD_DWORD v82, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v95, v82, v82, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v96, 10, v82
+	V_XOR_B32_e32 v95, v96, v95
+	V_ALIGNBIT_B32 v82, v82, v82, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v82, v95, v82
+	V_ADD_I32_e32 v81, v82, v81
+	BUFFER_LOAD_DWORD v51, s[8:11] + v[51:52] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v52, v51, v51, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v82, 3, v51
+	V_XOR_B32_e32 v52, v82, v52
+	V_ALIGNBIT_B32 v82, v51, v51, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v52, v52, v82
+	V_ADD_I32_e32 v52, v52, v81
+	V_ADD_I32_e32 v81, 26112, v0
+	V_ASHRREV_I32_e32 v82, 31, v81
+	V_LSHL_B64 v[95:96], v[81:82], 2
+	V_LSHR_B64 v[81:82], v[81:82], 30
+	V_ADD_I32_e32 v95, s12, v95
+	V_ADDC_U32_e32 v96, s14, v81
+	BUFFER_STORE_DWORD v52, s[8:11] + v[95:96] + 0
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v51, v81, v51
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[109:110] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v82, v81, v81, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v111, 10, v81
+	V_XOR_B32_e32 v82, v111, v82
+	V_ALIGNBIT_B32 v81, v81, v81, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v81, v82, v81
+	V_ADD_I32_e32 v51, v81, v51
+	BUFFER_LOAD_DWORD v81, s[8:11] + v[97:98] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v82, v81, v81, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v97, 3, v81
+	V_XOR_B32_e32 v82, v97, v82
+	V_ALIGNBIT_B32 v97, v81, v81, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v82, v82, v97
+	V_ADD_I32_e32 v51, v82, v51
+	V_ADD_I32_e32 v97, 26624, v0
+	V_ASHRREV_I32_e32 v98, 31, v97
+	V_LSHL_B64 v[111:112], v[97:98], 2
+	V_LSHR_B64 v[97:98], v[97:98], 30
+	V_ADD_I32_e32 v111, s12, v111
+	V_ADDC_U32_e32 v112, s14, v97
+	BUFFER_STORE_DWORD v51, s[8:11] + v[111:112] + 0
+	BUFFER_LOAD_DWORD v82, s[8:11] + v[105:106] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v81, v82, v81
+	BUFFER_LOAD_DWORD v82, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v97, v82, v82, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v98, 10, v82
+	V_XOR_B32_e32 v97, v98, v97
+	V_ALIGNBIT_B32 v82, v82, v82, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v82, v97, v82
+	V_ADD_I32_e32 v81, v82, v81
+	BUFFER_LOAD_DWORD v82, s[8:11] + v[83:84] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v83, v82, v82, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v84, 3, v82
+	V_XOR_B32_e32 v83, v84, v83
+	V_ALIGNBIT_B32 v84, v82, v82, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v83, v83, v84
+	V_ADD_I32_e32 v81, v83, v81
+	V_ADD_I32_e32 v83, 27136, v0
+	V_ASHRREV_I32_e32 v84, 31, v83
+	V_LSHL_B64 v[97:98], v[83:84], 2
+	V_LSHR_B64 v[83:84], v[83:84], 30
+	V_ADD_I32_e32 v97, s12, v97
+	V_ADDC_U32_e32 v98, s14, v83
+	BUFFER_STORE_DWORD v81, s[8:11] + v[97:98] + 0
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v82, v83, v82
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[111:112] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v84, v83, v83, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v113, 10, v83
+	V_XOR_B32_e32 v84, v113, v84
+	V_ALIGNBIT_B32 v83, v83, v83, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v83, v84, v83
+	V_ADD_I32_e32 v82, v83, v82
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[99:100] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v84, v83, v83, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v99, 3, v83
+	V_XOR_B32_e32 v84, v99, v84
+	V_ALIGNBIT_B32 v99, v83, v83, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v84, v84, v99
+	V_ADD_I32_e32 v82, v84, v82
+	V_ADD_I32_e32 v99, 27648, v0
+	V_ASHRREV_I32_e32 v100, 31, v99
+	V_LSHL_B64 v[113:114], v[99:100], 2
+	V_LSHR_B64 v[99:100], v[99:100], 30
+	V_ADD_I32_e32 v113, s12, v113
+	V_ADDC_U32_e32 v114, s14, v99
+	BUFFER_STORE_DWORD v82, s[8:11] + v[113:114] + 0
+	BUFFER_LOAD_DWORD v84, s[8:11] + v[107:108] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v83, v84, v83
+	BUFFER_LOAD_DWORD v84, s[8:11] + v[97:98] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v99, v84, v84, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v100, 10, v84
+	V_XOR_B32_e32 v99, v100, v99
+	V_ALIGNBIT_B32 v84, v84, v84, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v84, v99, v84
+	V_ADD_I32_e32 v83, v84, v83
+	BUFFER_LOAD_DWORD v63, s[8:11] + v[63:64] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v64, v63, v63, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v84, 3, v63
+	V_XOR_B32_e32 v64, v84, v64
+	V_ALIGNBIT_B32 v84, v63, v63, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v64, v64, v84
+	V_ADD_I32_e32 v64, v64, v83
+	V_ADD_I32_e32 v83, 28160, v0
+	V_ASHRREV_I32_e32 v84, 31, v83
+	V_LSHL_B64 v[99:100], v[83:84], 2
+	V_LSHR_B64 v[83:84], v[83:84], 30
+	V_ADD_I32_e32 v99, s12, v99
+	V_ADDC_U32_e32 v100, s14, v83
+	BUFFER_STORE_DWORD v64, s[8:11] + v[99:100] + 0
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v63, v83, v63
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[113:114] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v84, v83, v83, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v93, 10, v83
+	V_XOR_B32_e32 v84, v93, v84
+	V_ALIGNBIT_B32 v83, v83, v83, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v83, v84, v83
+	V_ADD_I32_e32 v63, v83, v63
+	BUFFER_LOAD_DWORD v83, s[8:11] + v[101:102] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v84, v83, v83, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v93, 3, v83
+	V_XOR_B32_e32 v84, v93, v84
+	V_ALIGNBIT_B32 v93, v83, v83, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v84, v84, v93
+	V_ADD_I32_e32 v63, v84, v63
+	V_ADD_I32_e32 v93, 28672, v0
+	V_ASHRREV_I32_e32 v94, 31, v93
+	V_LSHL_B64 v[101:102], v[93:94], 2
+	V_LSHR_B64 v[93:94], v[93:94], 30
+	V_ADD_I32_e32 v101, s12, v101
+	V_ADDC_U32_e32 v102, s14, v93
+	BUFFER_STORE_DWORD v63, s[8:11] + v[101:102] + 0
+	BUFFER_LOAD_DWORD v84, s[8:11] + v[109:110] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v83, v84, v83
+	BUFFER_LOAD_DWORD v84, s[8:11] + v[99:100] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v93, v84, v84, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v94, 10, v84
+	V_XOR_B32_e32 v93, v94, v93
+	V_ALIGNBIT_B32 v84, v84, v84, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v84, v93, v84
+	V_ADD_I32_e32 v83, v84, v83
+	BUFFER_LOAD_DWORD v84, s[8:11] + v[85:86] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v85, v84, v84, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v86, 3, v84
+	V_XOR_B32_e32 v85, v86, v85
+	V_ALIGNBIT_B32 v86, v84, v84, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v85, v85, v86
+	V_ADD_I32_e32 v83, v85, v83
+	V_ADD_I32_e32 v85, 29184, v0
+	V_ASHRREV_I32_e32 v86, 31, v85
+	V_LSHL_B64 v[93:94], v[85:86], 2
+	V_LSHR_B64 v[85:86], v[85:86], 30
+	V_ADD_I32_e32 v93, s12, v93
+	V_ADDC_U32_e32 v94, s14, v85
+	BUFFER_STORE_DWORD v83, s[8:11] + v[93:94] + 0
+	BUFFER_LOAD_DWORD v85, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v84, v85, v84
+	BUFFER_LOAD_DWORD v85, s[8:11] + v[101:102] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v86, v85, v85, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v95, 10, v85
+	V_XOR_B32_e32 v86, v95, v86
+	V_ALIGNBIT_B32 v85, v85, v85, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v85, v86, v85
+	V_ADD_I32_e32 v84, v85, v84
+	BUFFER_LOAD_DWORD v85, s[8:11] + v[87:88] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v86, v85, v85, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v87, 3, v85
+	V_XOR_B32_e32 v86, v87, v86
+	V_ALIGNBIT_B32 v87, v85, v85, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v86, v86, v87
+	V_ADD_I32_e32 v84, v86, v84
+	V_ADD_I32_e32 v86, 29696, v0
+	V_ASHRREV_I32_e32 v87, 31, v86
+	V_LSHL_B64 v[95:96], v[86:87], 2
+	V_LSHR_B64 v[86:87], v[86:87], 30
+	V_ADD_I32_e32 v95, s12, v95
+	V_ADDC_U32_e32 v96, s14, v86
+	BUFFER_STORE_DWORD v84, s[8:11] + v[95:96] + 0
+	BUFFER_LOAD_DWORD v86, s[8:11] + v[111:112] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v85, v86, v85
+	BUFFER_LOAD_DWORD v86, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v87, v86, v86, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v88, 10, v86
+	V_XOR_B32_e32 v87, v88, v87
+	V_ALIGNBIT_B32 v86, v86, v86, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v86, v87, v86
+	V_ADD_I32_e32 v85, v86, v85
+	BUFFER_LOAD_DWORD v86, s[8:11] + v[103:104] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v87, v86, v86, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v88, 3, v86
+	V_XOR_B32_e32 v87, v88, v87
+	V_ALIGNBIT_B32 v88, v86, v86, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v87, v87, v88
+	V_ADD_I32_e32 v85, v87, v85
+	V_ADD_I32_e32 v87, 30208, v0
+	V_ASHRREV_I32_e32 v88, 31, v87
+	V_LSHL_B64 v[93:94], v[87:88], 2
+	V_LSHR_B64 v[87:88], v[87:88], 30
+	V_ADD_I32_e32 v93, s12, v93
+	V_ADDC_U32_e32 v94, s14, v87
+	BUFFER_STORE_DWORD v85, s[8:11] + v[93:94] + 0
+	BUFFER_LOAD_DWORD v87, s[8:11] + v[97:98] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v86, v87, v86
+	BUFFER_LOAD_DWORD v87, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v88, v87, v87, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v95, 10, v87
+	V_XOR_B32_e32 v88, v95, v88
+	V_ALIGNBIT_B32 v87, v87, v87, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v87, v88, v87
+	V_ADD_I32_e32 v86, v87, v86
+	BUFFER_LOAD_DWORD v87, s[8:11] + v[89:90] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v88, v87, v87, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v89, 3, v87
+	V_XOR_B32_e32 v88, v89, v88
+	V_ALIGNBIT_B32 v89, v87, v87, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v88, v88, v89
+	V_ADD_I32_e32 v86, v88, v86
+	V_ADD_I32_e32 v88, 30720, v0
+	V_ASHRREV_I32_e32 v89, 31, v88
+	V_LSHL_B64 v[95:96], v[88:89], 2
+	V_LSHR_B64 v[88:89], v[88:89], 30
+	V_ADD_I32_e32 v95, s12, v95
+	V_ADDC_U32_e32 v96, s14, v88
+	BUFFER_STORE_DWORD v86, s[8:11] + v[95:96] + 0
+	BUFFER_LOAD_DWORD v88, s[8:11] + v[113:114] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v87, v88, v87
+	BUFFER_LOAD_DWORD v88, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v89, v88, v88, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v90, 10, v88
+	V_XOR_B32_e32 v89, v90, v89
+	V_ALIGNBIT_B32 v88, v88, v88, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v88, v89, v88
+	V_ADD_I32_e32 v87, v88, v87
+	BUFFER_LOAD_DWORD v88, s[8:11] + v[105:106] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v89, v88, v88, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v90, 3, v88
+	V_XOR_B32_e32 v89, v90, v89
+	V_ALIGNBIT_B32 v90, v88, v88, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v89, v89, v90
+	V_ADD_I32_e32 v87, v89, v87
+	V_ADD_I32_e32 v89, 31232, v0
+	V_ASHRREV_I32_e32 v90, 31, v89
+	V_LSHL_B64 v[93:94], v[89:90], 2
+	V_LSHR_B64 v[89:90], v[89:90], 30
+	V_ADD_I32_e32 v93, s12, v93
+	V_ADDC_U32_e32 v94, s14, v89
+	BUFFER_STORE_DWORD v87, s[8:11] + v[93:94] + 0
+	BUFFER_LOAD_DWORD v89, s[8:11] + v[99:100] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v88, v89, v88
+	BUFFER_LOAD_DWORD v89, s[8:11] + v[95:96] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v90, v89, v89, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v95, 10, v89
+	V_XOR_B32_e32 v90, v95, v90
+	V_ALIGNBIT_B32 v89, v89, v89, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v89, v90, v89
+	V_ADD_I32_e32 v88, v89, v88
+	BUFFER_LOAD_DWORD v89, s[8:11] + v[91:92] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v90, v89, v89, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v91, 3, v89
+	V_XOR_B32_e32 v90, v91, v90
+	V_ALIGNBIT_B32 v91, v89, v89, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v90, v90, v91
+	V_ADD_I32_e32 v88, v90, v88
+	V_ADD_I32_e32 v90, 31744, v0
+	V_ASHRREV_I32_e32 v91, 31, v90
+	V_LSHL_B64 v[95:96], v[90:91], 2
+	V_LSHR_B64 v[90:91], v[90:91], 30
+	V_ADD_I32_e32 v95, s12, v95
+	V_ADDC_U32_e32 v96, s14, v90
+	BUFFER_STORE_DWORD v88, s[8:11] + v[95:96] + 0
+	BUFFER_LOAD_DWORD v90, s[8:11] + v[101:102] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v89, v90, v89
+	BUFFER_LOAD_DWORD v90, s[8:11] + v[93:94] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v91, v90, v90, 19, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v92, 10, v90
+	V_XOR_B32_e32 v91, v92, v91
+	V_ALIGNBIT_B32 v90, v90, v90, 17, 0, 0, 0, 0
+	V_XOR_B32_e32 v90, v91, v90
+	V_ADD_I32_e32 v89, v90, v89
+	BUFFER_LOAD_DWORD v90, s[8:11] + v[107:108] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ALIGNBIT_B32 v91, v90, v90, 18, 0, 0, 0, 0
+	V_LSHRREV_B32_e32 v92, 3, v90
+	V_XOR_B32_e32 v91, v92, v91
+	V_ALIGNBIT_B32 v90, v90, v90, 7, 0, 0, 0, 0
+	V_XOR_B32_e32 v90, v91, v90
+	V_ADD_I32_e32 v89, v90, v89
+	V_ADD_I32_e32 v0, 32256, v0
+	V_ASHRREV_I32_e32 v1, 31, v0
+	V_LSHL_B64 v[90:91], v[0:1], 2
+	V_LSHR_B64 v[0:1], v[0:1], 30
+	V_ADD_I32_e32 v90, s12, v90
+	V_ADDC_U32_e32 v91, s14, v0
+	BUFFER_STORE_DWORD v89, s[8:11] + v[90:91] + 0
+	V_XOR_B32_e32 v0, v15, v12
+	V_BFI_B32 v0, v0, v11, v12, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v1, v11, v11, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v90, v11, v11, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v1, v90, v1
+	V_ALIGNBIT_B32 v90, v11, v11, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v1, v1, v90
+	V_ADD_I32_e32 v0, v0, v1
+	V_BFI_B32 v1, v33, v39, v45, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v90, v33, v33, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v91, v33, v33, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v90, v91, v90
+	V_ALIGNBIT_B32 v91, v33, v33, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v90, v90, v91
+	V_ADD_I32_e32 v28, v90, v28
+	V_ADD_I32_e32 v13, v13, v28
+	V_ADD_I32_e32 v1, v1, v13
+	V_ADD_I32_e32 v1, 1116352408, v1
+	V_ADD_I32_e32 v0, v1, v0
+	V_ALIGNBIT_B32 v13, v0, v0, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v0, v0, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v28, v13
+	V_ALIGNBIT_B32 v28, v0, v0, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v28
+	V_XOR_B32_e32 v28, v0, v15
+	V_BFI_B32 v28, v28, v11, v15, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v28, v13
+	V_ADD_I32_e32 v1, v27, v1
+	V_ALIGNBIT_B32 v27, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v28, v27
+	V_ALIGNBIT_B32 v28, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v28
+	V_BFI_B32 v28, v1, v33, v39, 0, 0, 0, 0
+	V_ADD_I32_e32 v7, v7, v45
+	V_ADD_I32_e32 v7, v28, v7
+	V_ADD_I32_e32 v7, v27, v7
+	V_ADD_I32_e32 v7, 1899447441, v7
+	V_ADD_I32_e32 v13, v7, v13
+	V_ALIGNBIT_B32 v27, v13, v13, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v13, v13, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v28, v27
+	V_ALIGNBIT_B32 v28, v13, v13, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v28
+	V_XOR_B32_e32 v28, v13, v11
+	V_BFI_B32 v28, v28, v0, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v27, v28, v27
+	V_ADD_I32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v7, v7, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v7, v7, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v28, v12
+	V_ALIGNBIT_B32 v28, v7, v7, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v28
+	V_BFI_B32 v28, v7, v1, v33, 0, 0, 0, 0
+	V_ADD_I32_e32 v39, v80, v39
+	V_ADD_I32_e32 v28, v28, v39
+	V_ADD_I32_e32 v12, v12, v28
+	V_ADD_I32_e32 v12, -1245643825, v12
+	V_ADD_I32_e32 v27, v12, v27
+	V_ALIGNBIT_B32 v28, v27, v27, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v27, v27, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v39, v28
+	V_ALIGNBIT_B32 v39, v27, v27, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v28, v39
+	V_XOR_B32_e64 v39, v27, v0, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v13, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v28, v39, v28
+	V_ADD_I32_e32 v12, v15, v12
+	V_ALIGNBIT_B32 v15, v12, v12, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v12, v12, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v39, v15
+	V_ALIGNBIT_B32 v39, v12, v12, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v39
+	V_BFI_B32 v39, v12, v7, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v79, v33
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v15, v15, v33
+	V_ADD_I32_e32 v15, -373957723, v15
+	V_ADD_I32_e32 v28, v15, v28
+	V_ALIGNBIT_B32 v33, v28, v28, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v28, v28, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v28, v28, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v28, v13, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v27, v13, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v11, v11, v15
+	V_ALIGNBIT_B32 v15, v11, v11, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v11, v11, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v39, v15
+	V_ALIGNBIT_B32 v39, v11, v11, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v39
+	V_BFI_B32 v39, v11, v12, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v78, v1
+	V_ADD_I32_e32 v1, v39, v1
+	V_ADD_I32_e32 v1, v15, v1
+	V_ADD_I32_e32 v1, 961987163, v1
+	V_ADD_I32_e32 v15, v33, v1
+	V_ALIGNBIT_B32 v33, v15, v15, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v15, v15, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v15, v15, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v15, v27, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v28, v27, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v0, v1, v0
+	V_ALIGNBIT_B32 v1, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v1, v39, v1
+	V_ALIGNBIT_B32 v39, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v1, v1, v39
+	V_BFI_B32 v39, v0, v11, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v7, v77, v7
+	V_ADD_I32_e32 v7, v39, v7
+	V_ADD_I32_e32 v1, v1, v7
+	V_ADD_I32_e32 v1, 1508970993, v1
+	V_ADD_I32_e32 v7, v33, v1
+	V_ALIGNBIT_B32 v33, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v7, v28, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v15, v28, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v1, v1, v13
+	V_ALIGNBIT_B32 v13, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v39, v13
+	V_ALIGNBIT_B32 v39, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v39
+	V_BFI_B32 v39, v1, v0, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v12, v76, v12
+	V_ADD_I32_e32 v12, v39, v12
+	V_ADD_I32_e32 v12, v13, v12
+	V_ADD_I32_e32 v12, -1841331548, v12
+	V_ADD_I32_e32 v13, v33, v12
+	V_ALIGNBIT_B32 v33, v13, v13, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v13, v13, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v13, v13, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v13, v15, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v7, v15, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v12, v12, v27
+	V_ALIGNBIT_B32 v27, v12, v12, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v12, v12, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v39, v27
+	V_ALIGNBIT_B32 v39, v12, v12, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v39
+	V_BFI_B32 v39, v12, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v75, v11
+	V_ADD_I32_e32 v11, v39, v11
+	V_ADD_I32_e32 v11, v27, v11
+	V_ADD_I32_e32 v11, -1424204075, v11
+	V_ADD_I32_e32 v27, v33, v11
+	V_ALIGNBIT_B32 v33, v27, v27, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v27, v27, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v27, v27, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v27, v7, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v13, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v11, v11, v28
+	V_ALIGNBIT_B32 v28, v11, v11, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v11, v11, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v39, v28
+	V_ALIGNBIT_B32 v39, v11, v11, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v28, v39
+	V_BFI_B32 v39, v11, v12, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v74, v0
+	V_ADD_I32_e32 v0, v39, v0
+	V_ADD_I32_e32 v0, v28, v0
+	V_ADD_I32_e32 v0, -670586216, v0
+	V_ADD_I32_e32 v28, v33, v0
+	V_ALIGNBIT_B32 v33, v28, v28, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v28, v28, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v39, v33
+	V_ALIGNBIT_B32 v39, v28, v28, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v33, v33, v39
+	V_XOR_B32_e64 v39, v28, v13, 0, 0, 0, 0
+	V_BFI_B32 v39, v39, v27, v13, 0, 0, 0, 0
+	V_ADD_I32_e32 v33, v39, v33
+	V_ADD_I32_e32 v0, v15, v0
+	V_ALIGNBIT_B32 v15, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v39, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v39, v15
+	V_ALIGNBIT_B32 v39, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v39
+	V_BFI_B32 v39, v0, v11, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v14, v1
+	V_ADD_I32_e32 v1, v39, v1
+	V_ADD_I32_e32 v1, v15, v1
+	V_ADD_I32_e32 v1, 310598401, v1
+	V_ADD_I32_e32 v14, v33, v1
+	V_ALIGNBIT_B32 v15, v14, v14, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v14, v14, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v33, v15
+	V_ALIGNBIT_B32 v33, v14, v14, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v33
+	V_XOR_B32_e64 v33, v14, v27, 0, 0, 0, 0
+	V_BFI_B32 v33, v33, v28, v27, 0, 0, 0, 0
+	V_ADD_I32_e32 v15, v33, v15
+	V_ADD_I32_e32 v1, v7, v1
+	V_ALIGNBIT_B32 v7, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v33, v7
+	V_ALIGNBIT_B32 v33, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v33
+	V_BFI_B32 v33, v1, v0, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v12, v73, v12
+	V_ADD_I32_e32 v12, v33, v12
+	V_ADD_I32_e32 v7, v7, v12
+	V_ADD_I32_e32 v7, 607225278, v7
+	V_ADD_I32_e32 v12, v15, v7
+	V_ALIGNBIT_B32 v15, v12, v12, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v12, v12, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v33, v15
+	V_ALIGNBIT_B32 v33, v12, v12, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v33
+	V_XOR_B32_e64 v33, v12, v28, 0, 0, 0, 0
+	V_BFI_B32 v33, v33, v14, v28, 0, 0, 0, 0
+	V_ADD_I32_e32 v15, v33, v15
+	V_ADD_I32_e32 v7, v13, v7
+	V_ALIGNBIT_B32 v13, v7, v7, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v7, v7, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v33, v13
+	V_ALIGNBIT_B32 v33, v7, v7, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v33
+	V_BFI_B32 v33, v7, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v58, v11
+	V_ADD_I32_e32 v11, v33, v11
+	V_ADD_I32_e32 v11, v13, v11
+	V_ADD_I32_e32 v11, 1426881987, v11
+	V_ADD_I32_e32 v13, v15, v11
+	V_ALIGNBIT_B32 v15, v13, v13, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v13, v13, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v33, v15
+	V_ALIGNBIT_B32 v33, v13, v13, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v15, v15, v33
+	V_XOR_B32_e64 v33, v13, v14, 0, 0, 0, 0
+	V_BFI_B32 v33, v33, v12, v14, 0, 0, 0, 0
+	V_ADD_I32_e32 v15, v33, v15
+	V_ADD_I32_e32 v11, v27, v11
+	V_ALIGNBIT_B32 v27, v11, v11, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v11, v11, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v33, v27
+	V_ALIGNBIT_B32 v33, v11, v11, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v33
+	V_BFI_B32 v33, v11, v7, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v57, v0
+	V_ADD_I32_e32 v0, v33, v0
+	V_ADD_I32_e32 v0, v27, v0
+	V_ADD_I32_e32 v0, 1925078388, v0
+	V_ADD_I32_e32 v15, v15, v0
+	V_ALIGNBIT_B32 v27, v15, v15, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v15, v15, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v33, v27
+	V_ALIGNBIT_B32 v33, v15, v15, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v33
+	V_XOR_B32_e64 v33, v15, v12, 0, 0, 0, 0
+	V_BFI_B32 v33, v33, v13, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v27, v33, v27
+	V_ADD_I32_e32 v0, v28, v0
+	V_ALIGNBIT_B32 v28, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v33, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v33, v28
+	V_ALIGNBIT_B32 v33, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v28, v28, v33
+	V_BFI_B32 v33, v0, v11, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v8, v1
+	V_ADD_I32_e32 v1, v33, v1
+	V_ADD_I32_e32 v1, v28, v1
+	V_ADD_I32_e32 v1, -2132889090, v1
+	V_ADD_I32_e32 v8, v27, v1
+	V_ALIGNBIT_B32 v27, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v28, v27
+	V_ALIGNBIT_B32 v28, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v27, v27, v28
+	V_XOR_B32_e64 v28, v8, v13, 0, 0, 0, 0
+	V_BFI_B32 v28, v28, v15, v13, 0, 0, 0, 0
+	V_ADD_I32_e32 v27, v28, v27
+	V_ADD_I32_e32 v1, v14, v1
+	V_ALIGNBIT_B32 v14, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v28, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v14, v28, v14
+	V_ALIGNBIT_B32 v28, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v14, v14, v28
+	V_BFI_B32 v28, v1, v0, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v3, v7
+	V_ADD_I32_e32 v3, v28, v3
+	V_ADD_I32_e32 v3, v14, v3
+	V_ADD_I32_e32 v3, -1680079193, v3
+	V_ADD_I32_e32 v7, v27, v3
+	V_ALIGNBIT_B32 v14, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v27, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v14, v27, v14
+	V_ALIGNBIT_B32 v27, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v14, v14, v27
+	V_XOR_B32_e64 v27, v7, v15, 0, 0, 0, 0
+	V_BFI_B32 v27, v27, v8, v15, 0, 0, 0, 0
+	V_ADD_I32_e32 v14, v27, v14
+	V_ADD_I32_e32 v3, v12, v3
+	V_ALIGNBIT_B32 v12, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v27, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v27, v12
+	V_ALIGNBIT_B32 v27, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v27
+	V_BFI_B32 v27, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v2, v11
+	V_ADD_I32_e32 v2, v27, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, -1046744716, v2
+	V_ADD_I32_e32 v11, v14, v2
+	V_ALIGNBIT_B32 v12, v11, v11, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v11, v11, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v14, v12
+	V_ALIGNBIT_B32 v14, v11, v11, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v14
+	V_XOR_B32_e64 v14, v11, v8, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v12, v14, v12
+	V_ADD_I32_e32 v2, v13, v2
+	V_ALIGNBIT_B32 v13, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_BFI_B32 v14, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v0, v4
+	V_ADD_I32_e32 v0, v14, v0
+	V_ADD_I32_e32 v0, v13, v0
+	V_ADD_I32_e32 v0, -459576895, v0
+	V_ADD_I32_e32 v4, v12, v0
+	V_ALIGNBIT_B32 v12, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v13, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v13, v12
+	V_ALIGNBIT_B32 v13, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v13
+	V_XOR_B32_e64 v13, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v13, v13, v11, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v12, v13, v12
+	V_ADD_I32_e32 v0, v15, v0
+	V_ALIGNBIT_B32 v13, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_BFI_B32 v14, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v1, v16
+	V_ADD_I32_e32 v1, v14, v1
+	V_ADD_I32_e32 v1, v13, v1
+	V_ADD_I32_e32 v1, -272742522, v1
+	V_ADD_I32_e32 v12, v12, v1
+	V_ALIGNBIT_B32 v13, v12, v12, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v12, v12, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v12, v12, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v12, v11, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v4, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v1, v8, v1
+	V_ALIGNBIT_B32 v8, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v14, v8
+	V_ALIGNBIT_B32 v14, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v14
+	V_BFI_B32 v14, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v3, v19
+	V_ADD_I32_e32 v3, v14, v3
+	V_ADD_I32_e32 v3, v8, v3
+	V_ADD_I32_e32 v3, 264347078, v3
+	V_ADD_I32_e32 v8, v13, v3
+	V_ALIGNBIT_B32 v13, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v12, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v3, v7, v3
+	V_ALIGNBIT_B32 v7, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v14, v7
+	V_ALIGNBIT_B32 v14, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v14
+	V_BFI_B32 v14, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v2, v20
+	V_ADD_I32_e32 v2, v14, v2
+	V_ADD_I32_e32 v2, v7, v2
+	V_ADD_I32_e32 v2, 604807628, v2
+	V_ADD_I32_e32 v7, v13, v2
+	V_ALIGNBIT_B32 v13, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v7, v12, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v8, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v2, v11, v2
+	V_ALIGNBIT_B32 v11, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v14, v11
+	V_ALIGNBIT_B32 v14, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v14
+	V_BFI_B32 v14, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v21, v0
+	V_ADD_I32_e32 v0, v14, v0
+	V_ADD_I32_e32 v0, v11, v0
+	V_ADD_I32_e32 v0, 770255983, v0
+	V_ADD_I32_e32 v11, v13, v0
+	V_ALIGNBIT_B32 v13, v11, v11, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v11, v11, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v11, v11, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v11, v8, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v0, v4, v0
+	V_ALIGNBIT_B32 v4, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v14, v4
+	V_ALIGNBIT_B32 v14, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v14
+	V_BFI_B32 v14, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v22, v1
+	V_ADD_I32_e32 v1, v14, v1
+	V_ADD_I32_e32 v1, v4, v1
+	V_ADD_I32_e32 v1, 1249150122, v1
+	V_ADD_I32_e32 v4, v13, v1
+	V_ALIGNBIT_B32 v13, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v11, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v1, v12, v1
+	V_ALIGNBIT_B32 v12, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v14, v12
+	V_ALIGNBIT_B32 v14, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v14
+	V_BFI_B32 v14, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v34, v3
+	V_ADD_I32_e32 v3, v14, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, 1555081692, v3
+	V_ADD_I32_e32 v12, v13, v3
+	V_ALIGNBIT_B32 v13, v12, v12, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v12, v12, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v12, v12, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v12, v11, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v4, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v3, v8, v3
+	V_ALIGNBIT_B32 v8, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v14, v8
+	V_ALIGNBIT_B32 v14, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v14
+	V_BFI_B32 v14, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v37, v2
+	V_ADD_I32_e32 v2, v14, v2
+	V_ADD_I32_e32 v2, v8, v2
+	V_ADD_I32_e32 v2, 1996064986, v2
+	V_ADD_I32_e32 v8, v13, v2
+	V_ALIGNBIT_B32 v13, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v12, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v2, v7, v2
+	V_ALIGNBIT_B32 v7, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v14, v7
+	V_ALIGNBIT_B32 v14, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v14
+	V_BFI_B32 v14, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v38, v0
+	V_ADD_I32_e32 v0, v14, v0
+	V_ADD_I32_e32 v0, v7, v0
+	V_ADD_I32_e32 v0, -1740746414, v0
+	V_ADD_I32_e32 v7, v13, v0
+	V_ALIGNBIT_B32 v13, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v7, v12, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v8, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v0, v11, v0
+	V_ALIGNBIT_B32 v11, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v14, v11
+	V_ALIGNBIT_B32 v14, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v14
+	V_BFI_B32 v14, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v40, v1
+	V_ADD_I32_e32 v1, v14, v1
+	V_ADD_I32_e32 v1, v11, v1
+	V_ADD_I32_e32 v1, -1473132947, v1
+	V_ADD_I32_e32 v11, v13, v1
+	V_ALIGNBIT_B32 v13, v11, v11, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v11, v11, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v11, v11, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v11, v8, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v1, v4, v1
+	V_ALIGNBIT_B32 v4, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v14, v4
+	V_ALIGNBIT_B32 v14, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v14
+	V_BFI_B32 v14, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v46, v3
+	V_ADD_I32_e32 v3, v14, v3
+	V_ADD_I32_e32 v3, v4, v3
+	V_ADD_I32_e32 v3, -1341970488, v3
+	V_ADD_I32_e32 v4, v13, v3
+	V_ALIGNBIT_B32 v13, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v11, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v3, v12, v3
+	V_ALIGNBIT_B32 v12, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v14, v12
+	V_ALIGNBIT_B32 v14, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v12, v12, v14
+	V_BFI_B32 v14, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v55, v2
+	V_ADD_I32_e32 v2, v14, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, -1084653625, v2
+	V_ADD_I32_e32 v12, v13, v2
+	V_ALIGNBIT_B32 v13, v12, v12, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v12, v12, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v12, v12, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v12, v11, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v4, v11, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v2, v8, v2
+	V_ALIGNBIT_B32 v8, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v14, v8
+	V_ALIGNBIT_B32 v14, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v14
+	V_BFI_B32 v14, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v56, v0
+	V_ADD_I32_e32 v0, v14, v0
+	V_ADD_I32_e32 v0, v8, v0
+	V_ADD_I32_e32 v0, -958395405, v0
+	V_ADD_I32_e32 v8, v13, v0
+	V_ALIGNBIT_B32 v13, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v12, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v0, v7, v0
+	V_ALIGNBIT_B32 v7, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v14, v7
+	V_ALIGNBIT_B32 v14, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v14
+	V_BFI_B32 v14, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v65, v1
+	V_ADD_I32_e32 v1, v14, v1
+	V_ADD_I32_e32 v1, v7, v1
+	V_ADD_I32_e32 v1, -710438585, v1
+	V_ADD_I32_e32 v7, v13, v1
+	V_ALIGNBIT_B32 v13, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v14, v13
+	V_ALIGNBIT_B32 v14, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v13, v13, v14
+	V_XOR_B32_e64 v14, v7, v12, 0, 0, 0, 0
+	V_BFI_B32 v14, v14, v8, v12, 0, 0, 0, 0
+	V_ADD_I32_e32 v13, v14, v13
+	V_ADD_I32_e32 v1, v11, v1
+	V_ALIGNBIT_B32 v11, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v14, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v14, v11
+	V_ALIGNBIT_B32 v14, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v14
+	V_BFI_B32 v14, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v6, v3
+	V_ADD_I32_e32 v3, v14, v3
+	V_ADD_I32_e32 v3, v11, v3
+	V_ADD_I32_e32 v3, 113926993, v3
+	V_ADD_I32_e32 v6, v13, v3
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v13, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v13, v11
+	V_ALIGNBIT_B32 v13, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v13
+	V_XOR_B32_e64 v13, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v13, v13, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v13, v11
+	V_ADD_I32_e32 v3, v4, v3
+	V_ALIGNBIT_B32 v4, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v13, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v13, v4
+	V_ALIGNBIT_B32 v13, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v13
+	V_BFI_B32 v13, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v5, v2
+	V_ADD_I32_e32 v2, v13, v2
+	V_ADD_I32_e32 v2, v4, v2
+	V_ADD_I32_e32 v2, 338241895, v2
+	V_ADD_I32_e32 v4, v11, v2
+	V_ALIGNBIT_B32 v5, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v11, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v11, v5
+	V_ALIGNBIT_B32 v11, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v11
+	V_XOR_B32_e64 v11, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v11, v11, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v5, v11, v5
+	V_ADD_I32_e32 v2, v12, v2
+	V_ALIGNBIT_B32 v11, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v26, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v11, v0
+	V_ADD_I32_e32 v0, 666307205, v0
+	V_ADD_I32_e32 v5, v5, v0
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v8, v0
+	V_ALIGNBIT_B32 v8, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v25, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v8, v1
+	V_ADD_I32_e32 v1, 773529912, v1
+	V_ADD_I32_e32 v8, v11, v1
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v7, v1
+	V_ALIGNBIT_B32 v7, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v31, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v7, v3
+	V_ADD_I32_e32 v3, 1294757372, v3
+	V_ADD_I32_e32 v7, v11, v3
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v6, v3
+	V_ALIGNBIT_B32 v6, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v32, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v6, v2
+	V_ADD_I32_e32 v2, 1396182291, v2
+	V_ADD_I32_e32 v6, v11, v2
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v4, v2
+	V_ALIGNBIT_B32 v4, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v43, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v4, v0
+	V_ADD_I32_e32 v0, 1695183700, v0
+	V_ADD_I32_e32 v4, v11, v0
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v5, v0
+	V_ALIGNBIT_B32 v5, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v44, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v5, v1
+	V_ADD_I32_e32 v1, 1986661051, v1
+	V_ADD_I32_e32 v5, v11, v1
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v8, v1
+	V_ALIGNBIT_B32 v8, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v49, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v8, v3
+	V_ADD_I32_e32 v3, -2117940946, v3
+	V_ADD_I32_e32 v8, v11, v3
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v7, v3
+	V_ALIGNBIT_B32 v7, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v50, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v7, v2
+	V_ADD_I32_e32 v2, -1838011259, v2
+	V_ADD_I32_e32 v7, v11, v2
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v6, v2
+	V_ALIGNBIT_B32 v6, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v59, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v6, v0
+	V_ADD_I32_e32 v0, -1564481375, v0
+	V_ADD_I32_e32 v6, v11, v0
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v4, v0
+	V_ALIGNBIT_B32 v4, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v60, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v4, v1
+	V_ADD_I32_e32 v1, -1474664885, v1
+	V_ADD_I32_e32 v4, v11, v1
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v5, v1
+	V_ALIGNBIT_B32 v5, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v61, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v5, v3
+	V_ADD_I32_e32 v3, -1035236496, v3
+	V_ADD_I32_e32 v5, v11, v3
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v8, v3
+	V_ALIGNBIT_B32 v8, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v62, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v8, v2
+	V_ADD_I32_e32 v2, -949202525, v2
+	V_ADD_I32_e32 v8, v11, v2
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v7, v2
+	V_ALIGNBIT_B32 v7, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v66, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v7, v0
+	V_ADD_I32_e32 v0, -778901479, v0
+	V_ADD_I32_e32 v7, v11, v0
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v6, v0
+	V_ALIGNBIT_B32 v6, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v67, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v6, v1
+	V_ADD_I32_e32 v1, -694614492, v1
+	V_ADD_I32_e32 v6, v11, v1
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v4, v1
+	V_ALIGNBIT_B32 v4, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v68, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v4, v3
+	V_ADD_I32_e32 v3, -200395387, v3
+	V_ADD_I32_e32 v4, v11, v3
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v5, v3
+	V_ALIGNBIT_B32 v5, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v70, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v5, v2
+	V_ADD_I32_e32 v2, 275423344, v2
+	V_ADD_I32_e32 v5, v11, v2
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v8, v2
+	V_ALIGNBIT_B32 v8, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v69, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v8, v0
+	V_ADD_I32_e32 v0, 430227734, v0
+	V_ADD_I32_e32 v8, v11, v0
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v7, v0
+	V_ALIGNBIT_B32 v7, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v71, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v7, v1
+	V_ADD_I32_e32 v1, 506948616, v1
+	V_ADD_I32_e32 v7, v11, v1
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v6, v1
+	V_ALIGNBIT_B32 v6, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v72, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v6, v3
+	V_ADD_I32_e32 v3, 659060556, v3
+	V_ADD_I32_e32 v6, v11, v3
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v4, v3
+	V_ALIGNBIT_B32 v4, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v52, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v4, v2
+	V_ADD_I32_e32 v2, 883997877, v2
+	V_ADD_I32_e32 v4, v11, v2
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v5, v2
+	V_ALIGNBIT_B32 v5, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v51, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v5, v0
+	V_ADD_I32_e32 v0, 958139571, v0
+	V_ADD_I32_e32 v5, v11, v0
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v8, v0
+	V_ALIGNBIT_B32 v8, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v81, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v8, v1
+	V_ADD_I32_e32 v1, 1322822218, v1
+	V_ADD_I32_e32 v8, v11, v1
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v7, v1
+	V_ALIGNBIT_B32 v7, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v82, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v7, v3
+	V_ADD_I32_e32 v3, 1537002063, v3
+	V_ADD_I32_e32 v7, v11, v3
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v6, v3
+	V_ALIGNBIT_B32 v6, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v64, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v6, v2
+	V_ADD_I32_e32 v2, 1747873779, v2
+	V_ADD_I32_e32 v6, v11, v2
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v4, v2
+	V_ALIGNBIT_B32 v4, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v63, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v4, v0
+	V_ADD_I32_e32 v0, 1955562222, v0
+	V_ADD_I32_e32 v4, v11, v0
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v5, v0
+	V_ALIGNBIT_B32 v5, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v83, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v5, v1
+	V_ADD_I32_e32 v1, 2024104815, v1
+	V_ADD_I32_e32 v5, v11, v1
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v8, v1
+	V_ALIGNBIT_B32 v8, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v84, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v8, v3
+	V_ADD_I32_e32 v3, -2067236844, v3
+	V_ADD_I32_e32 v8, v11, v3
+	V_ALIGNBIT_B32 v11, v8, v8, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v8, v8, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v8, v8, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v8, v4, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v5, v4, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v3, v7, v3
+	V_ALIGNBIT_B32 v7, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v12, v7
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v7, v7, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v85, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v7, v2
+	V_ADD_I32_e32 v2, -1933114872, v2
+	V_ADD_I32_e32 v7, v11, v2
+	V_ALIGNBIT_B32 v11, v7, v7, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v7, v7, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v7, v7, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v7, v5, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v8, v5, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v2, v6, v2
+	V_ALIGNBIT_B32 v6, v2, v2, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v2, v2, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v12, v6
+	V_ALIGNBIT_B32 v12, v2, v2, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v6, v6, v12
+	V_BFI_B32 v12, v2, v3, v1, 0, 0, 0, 0
+	V_ADD_I32_e32 v0, v86, v0
+	V_ADD_I32_e32 v0, v12, v0
+	V_ADD_I32_e32 v0, v6, v0
+	V_ADD_I32_e32 v0, -1866530822, v0
+	V_ADD_I32_e32 v6, v11, v0
+	V_ALIGNBIT_B32 v11, v6, v6, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v6, v6, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v6, v6, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v6, v8, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v7, v8, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v0, v4, v0
+	V_ALIGNBIT_B32 v4, v0, v0, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v0, v0, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v12, v4
+	V_ALIGNBIT_B32 v12, v0, v0, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v4, v4, v12
+	V_BFI_B32 v12, v0, v2, v3, 0, 0, 0, 0
+	V_ADD_I32_e32 v1, v87, v1
+	V_ADD_I32_e32 v1, v12, v1
+	V_ADD_I32_e32 v1, v4, v1
+	V_ADD_I32_e32 v1, -1538233109, v1
+	V_ADD_I32_e32 v4, v11, v1
+	V_ALIGNBIT_B32 v11, v4, v4, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v4, v4, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v4, v4, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v4, v7, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v6, v7, 0, 0, 0, 0
+	V_ADD_I32_e32 v11, v12, v11
+	V_ADD_I32_e32 v1, v5, v1
+	V_ALIGNBIT_B32 v5, v1, v1, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v1, v1, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v12, v5
+	V_ALIGNBIT_B32 v12, v1, v1, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v5, v5, v12
+	V_BFI_B32 v12, v1, v0, v2, 0, 0, 0, 0
+	V_ADD_I32_e32 v3, v88, v3
+	V_ADD_I32_e32 v3, v12, v3
+	V_ADD_I32_e32 v3, v5, v3
+	V_ADD_I32_e32 v3, -1090935817, v3
+	V_ADD_I32_e32 v5, v11, v3
+	V_ALIGNBIT_B32 v11, v5, v5, 13, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v5, v5, 2, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v12, v11
+	V_ALIGNBIT_B32 v12, v5, v5, 22, 0, 0, 0, 0
+	V_XOR_B32_e32 v11, v11, v12
+	V_XOR_B32_e64 v12, v5, v6, 0, 0, 0, 0
+	V_BFI_B32 v12, v12, v4, v6, 0, 0, 0, 0
+	BUFFER_LOAD_DWORD v13, s[8:11] + v[9:10] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	V_ADD_I32_e32 v12, v13, v12
+	V_ADD_I32_e32 v11, v11, v12
+	V_ADD_I32_e32 v3, v8, v3
+	V_ALIGNBIT_B32 v8, v3, v3, 11, 0, 0, 0, 0
+	V_ALIGNBIT_B32 v12, v3, v3, 6, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v12, v8
+	V_ALIGNBIT_B32 v12, v3, v3, 25, 0, 0, 0, 0
+	V_XOR_B32_e32 v8, v8, v12
+	V_BFI_B32 v12, v3, v1, v0, 0, 0, 0, 0
+	V_ADD_I32_e32 v2, v89, v2
+	V_ADD_I32_e32 v2, v12, v2
+	V_ADD_I32_e32 v2, v8, v2
+	V_ADD_I32_e32 v2, -965641998, v2
+	V_ADD_I32_e32 v8, v11, v2
+	BUFFER_STORE_DWORD v8, s[8:11] + v[9:10] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v8, s[8:11] + v[17:18] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v5, v8, v5
+	BUFFER_STORE_DWORD v5, s[8:11] + v[17:18] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v5, s[8:11] + v[23:24] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v4, v5, v4
+	BUFFER_STORE_DWORD v4, s[8:11] + v[23:24] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v4, s[8:11] + v[29:30] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v4, v4, v6
+	BUFFER_STORE_DWORD v4, s[8:11] + v[29:30] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v4, s[8:11] + v[35:36] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v4, v4, v7
+	V_ADD_I32_e32 v2, v4, v2
+	BUFFER_STORE_DWORD v2, s[8:11] + v[35:36] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v2, s[8:11] + v[41:42] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v2, v2, v3
+	BUFFER_STORE_DWORD v2, s[8:11] + v[41:42] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v2, s[8:11] + v[47:48] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v1, v2, v1
+	BUFFER_STORE_DWORD v1, s[8:11] + v[47:48] + 0
+	S_WAITCNT vmcnt(0) expcnt(0) 
+	BUFFER_LOAD_DWORD v1, s[8:11] + v[53:54] + 0
+	S_WAITCNT vmcnt(0) 
+	V_ADD_I32_e32 v0, v1, v0
+	BUFFER_STORE_DWORD v0, s[8:11] + v[53:54] + 0

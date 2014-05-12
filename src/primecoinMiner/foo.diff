@@ -1,0 +1,282 @@
+diff --git a/src/primecoinMiner/bn.cl b/src/primecoinMiner/bn.cl
+index 54390d9..d0a8b6c 100644
+--- a/src/primecoinMiner/bn.cl
++++ b/src/primecoinMiner/bn.cl
+@@ -1,5 +1,5 @@
+ 
+-void setBN(uint32_t tid, __global mpz_t *mpzPrimorial, uint64_t v){
++void setBN(uint32_t tid, __global mpz_t *restrict mpzPrimorial, uint64_t v){
+ 	D_REF(mpzPrimorial->d,0,tid) = v;
+ 	mpzPrimorial->size[tid] = 1;
+ }
+@@ -52,7 +52,7 @@ uint64_t invert64(uint64_t n){
+ 	h = mul_hi(m,n); \
+ 	l = m * n;
+ 
+-uint32_t BNModExactOdd(uint32_t tid, __global mpz_t *mpz, uint32_t d){
++uint32_t BNModExactOdd(uint32_t tid, __global mpz_t *restrict mpz, uint32_t d){
+   	uint64_t inverse = invert64(d);
+ 	uint32_t i;
+ 	uint64_t s,c=0, h=0, l, dummy;
+diff --git a/src/primecoinMiner/bn_div.cl b/src/primecoinMiner/bn_div.cl
+index b174273..4216399 100644
+--- a/src/primecoinMiner/bn_div.cl
++++ b/src/primecoinMiner/bn_div.cl
+@@ -1,17 +1,17 @@
+ 
+ 
+-void mpn_rshift(uint32_t tid, __private uint64_t d[], __global uint64_t src[][STRIDE], uint32_t ofst, uint32_t length, uint32_t shift){
++void mpn_rshift(uint32_t tid, __private uint64_t *restrict d, __global uint64_t *restrict src, uint32_t ofst, uint32_t length, uint32_t shift){
+ 	//TODO: do something about shifting in of uninitialized garbage
+ 	uint32_t i;
+ 	for(i=0; i < length; i++){
+-		d[i] = (src[i+ofst][tid] >> shift) | (src[i+ofst+1][tid] << (64 - shift)); 
++		d[i] = (D_REF(src,i+ofst,tid) >> shift) | (D_REF(src,i+ofst+1,tid) << (64 - shift)); 
+ 	}
+ } 
+ 
+-void mpn_copy(uint32_t tid, __private uint64_t d[], __global uint64_t src[][STRIDE], uint32_t ofst, uint32_t length){
++void mpn_copy(uint32_t tid, __private uint64_t *restrict d, __global uint64_t *restrict src, uint32_t ofst, uint32_t length){
+ 	uint32_t i;
+ 	for(i=0; i < length; i++){
+-		d[i] = src[i+ofst][tid]; 
++		d[i] = D_REF(src,i+ofst,tid); 
+ 	}
+ }
+ 
+@@ -100,7 +100,7 @@ uint64_t mpn_bdiv (__private uint64_t q[],
+ }
+ 
+ //TODO: Not debugged
+-void divBN(uint32_t tid, __global mpz_t *q, __global mpz_t *n, __global mpz_t *d){
++void divBN(uint32_t tid, __global mpz_t *restrict q, __global mpz_t *restrict n, __global mpz_t *restrict d){
+ 
+ 	uint32_t nsize = n->size[tid];
+ 	uint32_t dsize = d->size[tid];
+@@ -111,7 +111,7 @@ void divBN(uint32_t tid, __global mpz_t *q, __global mpz_t *n, __global mpz_t *d
+ 	//Catch this early to avoid crash
+ 	if(nsize < dsize){
+ 		q->size[tid] = 0;
+-		q->d[0][tid] = 0;
++		D_REF(q->d,0,tid) = 0;
+ 		return;
+ 	}	
+ 
+@@ -120,7 +120,7 @@ void divBN(uint32_t tid, __global mpz_t *q, __global mpz_t *n, __global mpz_t *d
+ //    		qp = TMP_ALLOC_LIMBS (qn);
+ 
+ 	uint32_t ofst=0;
+-  	while (d->d[ofst][tid] == 0 && ofst < d->size[tid])
++  	while (D_REF(d->d,ofst,tid) == 0 && ofst < d->size[tid])
+     	{
+       		ofst++;
+       		nsize--;
+@@ -130,7 +130,7 @@ void divBN(uint32_t tid, __global mpz_t *q, __global mpz_t *n, __global mpz_t *d
+ 	uint32_t qsize = nsize - dsize + 1;
+ #if 1
+ 
+-	uint32_t shift = count_trailing_zeros (d->d[0][tid]);
++	uint32_t shift = count_trailing_zeros (D_REF(d->d,0,tid));
+ 
+     	{
+       		uint32_t ss = (dsize > qsize) ? qsize + 1 : dsize;
+diff --git a/src/primecoinMiner/cldefs.h b/src/primecoinMiner/cldefs.h
+index 34e493e..b89a323 100644
+--- a/src/primecoinMiner/cldefs.h
++++ b/src/primecoinMiner/cldefs.h
+@@ -13,6 +13,11 @@
+ 
+ #define D_REF(a,b,t) a[(b)*STRIDE+t]
+ 
++uint32_t get_global_id(uint32_t index);
++//uint64_t __OVERLOADABLE__ mul_hi(uint64_t a, uint64_t b);
++void barrier(uint32_t);
++//uint32_t __OVERLOADABLE__ clz(uint32_t);
++
+ typedef struct {
+  	uint64_t v[4]; 
+ } uint256_t;
+diff --git a/src/primecoinMiner/foo.o b/src/primecoinMiner/foo.o
+index de7ac40..5b0c0fa 100644
+Binary files a/src/primecoinMiner/foo.o and b/src/primecoinMiner/foo.o differ
+diff --git a/src/primecoinMiner/oclMain.cpp b/src/primecoinMiner/oclMain.cpp
+index 1f6970f..a97657d 100644
+--- a/src/primecoinMiner/oclMain.cpp
++++ b/src/primecoinMiner/oclMain.cpp
+@@ -177,7 +177,7 @@ printf("Err3: %d\n", error);
+ 	//error=clEnqueueWriteBuffer(cq, temp_mem, CL_FALSE, 0, 80 * STRIDE, tempin, 0, NULL, NULL);
+ 
+ 	// Perform the operation
+-	worksize = 256;
++	worksize = 512;
+ 	cl_event event;
+ 	error=clEnqueueNDRangeKernel(cq, k_rot13, 1, NULL, &worksize, &worksize, 0, NULL,  &event);
+ 	// Read the result back into buf2
+diff --git a/src/primecoinMiner/prime.cl b/src/primecoinMiner/prime.cl
+index 511dc14..1c1055f 100644
+--- a/src/primecoinMiner/prime.cl
++++ b/src/primecoinMiner/prime.cl
+@@ -14,20 +14,20 @@ float GetChainDifficulty(unsigned int nChainLength)
+ }
+ 
+ 
+-void SieveInit(uint32_t tid, uint32_t lSieveTarget, uint32_t lSieveBTTarget, __global sievetemp_t *temp){
++void SieveInit(uint32_t tid, uint32_t lSieveTarget, uint32_t lSieveBTTarget, __global sievetemp_t *restrict temp){
+ 	uint32_t i;
+ 	for(i=0; i < SIEVE_WORDS; i++){
+-		temp->vfCandidates[i][tid] = 0;
+-		temp->vfCompositeBiTwin[i][tid] = 0;
+-		temp->vfCompositeCunningham1[i][tid] = 0;
+-		temp->vfCompositeCunningham2[i][tid] = 0;
+-		temp->vfCompositeLayerCC1[i][tid] = 0;
+-		temp->vfCompositeLayerCC2[i][tid] = 0;
++		D_REF(temp->vfCandidates,i,tid) = 0;
++		D_REF(temp->vfCompositeBiTwin,i,tid) = 0;
++		D_REF(temp->vfCompositeCunningham1,i,tid) = 0;
++		D_REF(temp->vfCompositeCunningham2,i,tid) = 0;
++		D_REF(temp->vfCompositeLayerCC1,i,tid) = 0;
++		D_REF(temp->vfCompositeLayerCC2,i,tid) = 0;
+ 	}
+ 
+ 	for(i=0; i < MULT_WORDS; i++){
+-		temp->vCunningham1Multipliers[i][tid] = 0xFFFFFFFFUL;
+-		temp->vCunningham2Multipliers[i][tid] = 0xFFFFFFFFUL;
++		D_REF(temp->vCunningham1Multipliers,i,tid) = 0xFFFFFFFFUL;
++		D_REF(temp->vCunningham2Multipliers,i,tid) = 0xFFFFFFFFUL;
+ 	}
+ /*		this->nAllocatedSieveSize = nSieveSize;
+       this->nSievePercentage = nSievePercentage;
+@@ -53,7 +53,7 @@ void Weave(uint32_t tid){
+ 	//TODO:
+ }
+ 
+-void MineProbablePrimeChain(uint32_t tid, __global primecoinInput_t *input, __global primecoinOutput_t *output, __global primecoinTemp_t *temp ){
++void MineProbablePrimeChain(uint32_t tid, __global primecoinInput_t *restrict input, __global primecoinOutput_t *restrict output, __global primecoinTemp_t *restrict temp ){
+ 	uint32_t lSieveTarget=0, lSieveBTTarget=0;
+    	if (input->nOverrideTargetValue > 0)
+       		lSieveTarget = input->nOverrideTargetValue;
+diff --git a/src/primecoinMiner/rot13.cl b/src/primecoinMiner/rot13.cl
+index 7cacff5..b7fb239 100644
+--- a/src/primecoinMiner/rot13.cl
++++ b/src/primecoinMiner/rot13.cl
+@@ -1,5 +1,5 @@
+ #pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
+-
++#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+ 
+ typedef unsigned long uint64_t;
+ typedef unsigned uint32_t;
+@@ -8,9 +8,9 @@ typedef unsigned char uint8_t;
+ #include "cldefs.h"
+  
+ #include "sha256.cl" 
+-#include "bn.cl"
+-//#include "bn_div.cl" 
+-//#include "prime.cl"    
++#include "bn.cl" 
++#include "bn_div.cl" 
++#include "prime.cl"      
+      
+ 
+ void memcpy_progblock(uint32_t tid, __global uint32_t *restrict dst, __global primecoinBlock_t *restrict src){
+@@ -60,7 +60,7 @@ void Primorial(uint32_t tid, uint32_t multiplier, __global uint32_t *restrict  v
+ 		mulBN(tid,mpzPrimorial,mpzPrimorial,nPrime);		
+ 	} 
+ #endif
+-}
++} 
+ 
+ 
+ void generateHeaderHash(uint32_t tid, __global    sha256_context *restrict ctx,
+@@ -122,12 +122,12 @@ __kernel void rot13
+ 
+ 	//TODO: do this on cpu 
+ 	uint32_t nHashFactor = PrimorialFast(input->nPrimorialHashFactor, vPrimes, vPrimesSize);	
+-	//just for fun  
++	//just for fun   
+ 	output->factor = nHashFactor;    
+ 	
+ 	input->blocks.nonce[tid] = 0x00400000 * tid;
+-  	uint32_t maxNonce = (0x00400000 * tid) | (0x00FFFFFF >> 8); 
+-	    
++  	uint32_t maxNonce = (0x00400000 * tid) | (0x00FFFFFF >> 2); 
++	      
+    
+     	//TODO: temporary fudge the block hash. in reality whoever starts up gpu miner will already have block setup
+     	input->blocks.timestamp[tid] = tid;
+@@ -138,7 +138,7 @@ __kernel void rot13
+ 
+ 	uint32_t isdiv = BN256DivisibleBy(tid,&temp->mpzHash,nHashFactor);
+ //	output->mod[tid] = isdiv; 
+- #if 1
++ #if 0
+ 	while ((D_REF(output->hash,7,tid) < 0x80000000U || !isdiv) && input->blocks.nonce[tid] < maxNonce){ 
+ 		input->blocks.nonce[tid]++;
+ 		generateHeaderHash(tid,ctx,&input->blocks,temp->hashTemp,output->hash);
+@@ -175,7 +175,7 @@ __kernel void rot13
+ 	// Primecoin: mine for prime chain
+ 	//pretty much go time
+ 	//MineProbablePrimeChain(psieve, primecoinBlock, mpzFixedMultiplier, fNewBlock, nTriedMultiplier, nProbableChainLength, nTests, nPrimesHit, threadIndex, mpzHash, nPrimorialMultiplier);
+-//	MineProbablePrimeChain(tid,input,output,temp);			
++	MineProbablePrimeChain(tid,input,output,temp);			
+ }		         					
+ 
+ 
+diff --git a/src/primecoinMiner/sha256.cl b/src/primecoinMiner/sha256.cl
+index 78e86e6..1844269 100644
+--- a/src/primecoinMiner/sha256.cl
++++ b/src/primecoinMiner/sha256.cl
+@@ -3,10 +3,11 @@
+ 
+ #define GET_UINT32(n,w,b,i,t,o)                       \
+ {                                               \
+-    D_REF(n,w,t) = (GET_UINT8(b,i +   o,t) << 24 )       \
+-                 | (GET_UINT8(b,i + 1+o,t) << 16 )       \
+-                 | (GET_UINT8(b,i + 2+o,t) <<  8 )       \
+-                 | (GET_UINT8(b,i + 3+o,t) );      \
++    uint32_t uint32_temp = D_REF(b,(i+o)>>2,t);  \
++    D_REF(n,w,t) = (((uint32_temp >> 0 ) & 0xFF) << 24)      \
++                 | (((uint32_temp >> 8 ) & 0xFF) << 16)      \
++                 | (((uint32_temp >> 16) & 0xFF) << 8 )     \
++                 | (((uint32_temp >> 24) & 0xFF) << 0 );      \
+ }
+ 
+ #define PUT_UINT32(n,b,i,t)                       \
+@@ -25,8 +26,8 @@ __constant uint32_t sha256_padding[16] =
+ 
+ void sha256_init( uint32_t tid, __global sha256_context *restrict ctx){
+ 	int i;
+-//	for(i=0; i < 16; i++)
+-//		D_REF(ctx->padding,i,tid) = (uint32_t)sha256_padding[i];
++	for(i=0; i < 16; i++)
++		D_REF(ctx->padding,i,tid) = (uint32_t)sha256_padding[i];
+ }
+ 
+ void sha256_starts( unsigned tid, __global sha256_context *restrict ctx )
+@@ -48,7 +49,7 @@ void sha256_starts( unsigned tid, __global sha256_context *restrict ctx )
+ }
+ 
+ 
+-void sha256_process( uint32_t tid, __global sha256_context *restrict ctx, __global uint32_t *restrict data, uint32_t ofst )
++inline void sha256_process( uint32_t tid, __global sha256_context *restrict ctx, __global const uint32_t *restrict data, uint32_t ofst )
+ {
+     uint32_t temp1, temp2;
+     uint32_t A, B, C, D, E, F, G, H;
+@@ -180,7 +181,7 @@ void sha256_process( uint32_t tid, __global sha256_context *restrict ctx, __glob
+     D_REF(ctx->state,7,tid) += H; 
+ }
+ 
+-void memcpy_32(uint32_t tid, __global uint32_t *restrict dst, uint32_t dofst, __global uint32_t *restrict src, uint32_t sofst, uint32_t length){
++void memcpy_32(uint32_t tid, __global uint32_t *restrict dst, uint32_t dofst, __global const uint32_t *restrict src, uint32_t sofst, uint32_t length){
+ 	uint32_t i;
+ 	uint32_t save  = D_REF(dst,dofst/4,tid) & (uint32_t)(0xFFFFFFFFUL >> ((4-(dofst%4)) * 8) );
+ 	uint32_t ssave = (uint64_t)D_REF(src,sofst/4,tid) >> ((sofst%4) * 8);
+@@ -189,7 +190,7 @@ void memcpy_32(uint32_t tid, __global uint32_t *restrict dst, uint32_t dofst, __
+ 
+ 	for(i=0; i < length/4 + (length%4?1:0); i++){
+ 		uint32_t sword = D_REF(src,1+i+sofst/4,tid);
+-		uint32_t tword = ((uint64_t)sword << ((4 - (sofst%4))*8)) | ssave;
++		uint32_t tword = (sword << ((4 - (sofst%4))*8)) | ssave;
+ 		D_REF(dst,i+dofst/4,tid) = save | (tword << ((dofst % 4) * 8));
+ 		save = ((uint64_t)tword >> ((4 - (dofst % 4)) * 8)) ;
+ 		ssave = (uint64_t)sword >> ((sofst%4)*8);

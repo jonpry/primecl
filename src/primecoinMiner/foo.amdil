@@ -1,0 +1,28 @@
+@if_eq:
+	.section	.AMDGPU.config
+.long	47176
+.long	0
+.long	47180
+.long	0
+	.text
+; BB#0:
+	S_LOAD_DWORD s2, s[0:1], 11
+	S_LOAD_DWORD s3, s[0:1], 12
+	S_WAITCNT lgkmcnt(0)
+	V_MOV_B32_e32 v0, s3
+	V_CMP_EQ_I32_e64 s[2:3], s2, v0, 0, 0, 0, 0
+	V_CNDMASK_B32_e64 v0, 0, 1, s[2:3], 0, 0, 0, 0
+	S_LOAD_DWORDX2 s[0:1], s[0:1], 9
+	S_MOV_B64 s[4:5], 0
+	S_MOV_B32 s6, 0
+	S_MOV_B32 s7, 61440
+	S_WAITCNT lgkmcnt(0)
+	V_MOV_B32_e32 v1, s0
+	V_MOV_B32_e32 v2, s1
+	BUFFER_STORE_DWORD v0, s[4:7] + v[1:2] + 0
+	S_ENDPGM
+
+	.section	.AMDGPU.csdata
+; Kernel info:
+; NumSgprs: 7
+; NumVgprs: 2
